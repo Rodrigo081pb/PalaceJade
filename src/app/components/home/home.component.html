@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<app-comercial></app-comercial>
+
+<section class="px-6 py-10 bg-[#0e0e0e] min-h-screen text-white">
+  <h1 class="text-4xl font-bold text-[#e2e2e2] mb-8">Marketplace</h1>
+
+  <!-- Filtros -->
+  <div class="flex flex-col md:flex-row gap-4 mb-10">
+    <select class="bg-[#1a1a1a] text-white text-sm px-4 py-2 border border-[#2a2a2a] rounded">
+      <option>Categorias</option>
+    </select>
+    <input
+      type="text"
+      placeholder="Filtrar"
+      class="bg-[#1a1a1a] text-white text-sm px-4 py-2 border border-[#2a2a2a] rounded w-full md:w-auto"
+    />
+  </div>
+
+  <!-- Grid de Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <!-- Card 1: WhatsApp -->
+    <app-whatsapp></app-whatsapp>
+
+    <!-- Card 2: Agendamentos -->
+    <app-sistema-agendamento></app-sistema-agendamento>
+
+    <!-- Card 3: Landing Pages -->
+    <app-landing-pages></app-landing-pages>    
+
+    <!-- Card 4: Design -->
+    <app-design></app-design>
+
+    <!-- Card 5: Cardápio -->
+    <app-cardapio-foods></app-cardapio-foods>
+
+    <!-- Card 6: Linkstree -->
+    <app-linkstree></app-linkstree>
+
+    <!-- Card 6: Projeto -->
+    <app-orcamento></app-orcamento>
+
+  </div>
+</section>
+
+<app-footer></app-footer>
