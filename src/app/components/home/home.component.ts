@@ -10,11 +10,12 @@ import { OrcamentoComponent } from "../cards/orcamento/orcamento.component";
 import { LinkstreeComponent } from "../cards/linkstree/linkstree.component";
 import { FooterComponent } from "../footer/footer.component";
 import { ComercialComponent } from "../comercial/comercial.component";
+import { BotsTelegramComponent } from "../cards/bots-telegram/bots-telegram.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, WhatsappComponent, SistemaAgendamentoComponent, LandingPagesComponent, DesignComponent, CardapioFoodsComponent, OrcamentoComponent, LinkstreeComponent, FooterComponent, ComercialComponent],
+  imports: [CommonModule, NavbarComponent, WhatsappComponent, SistemaAgendamentoComponent, LandingPagesComponent, DesignComponent, CardapioFoodsComponent, OrcamentoComponent, LinkstreeComponent, FooterComponent, ComercialComponent, BotsTelegramComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

@@ -1,13 +1,42 @@
-<nav class="flex justify-between items-center px-6 py-4 bg-[#0e0e0e] text-white border-b border-[#222]">
-    <div class="flex items-center gap-4">
-      <app-logo></app-logo>
-      <span class="text-2xl font-bold text-[#e3c9ee]">HIKARUDEV</span>
+<nav class="flex justify-between items-center px-6 py-4 bg-[#0e0e0e] text-white border-b border-[#222] relative">
+  <!-- Logo + Título -->
+  <div class="flex items-center gap-4">
+    <app-logo></app-logo>
+    <span class="text-xl md:text-2xl font-bold text-[#e3c9ee]">HIKARUDEV</span>
+  </div>
+
+  <!-- Menu Desktop (com estilo minimalista) -->
+  <ul class="hidden md:flex gap-6 text-sm md:text-base font-medium text-[#e3c9ee]">
+    <li class="hover:text-white cursor-pointer transition-colors duration-200">Home</li>
+    <li class="hover:text-white cursor-pointer transition-colors duration-200">Marketplace</li>
+    <li class="hover:text-white cursor-pointer transition-colors duration-200">Sobre</li>
+    <li class="hover:text-white cursor-pointer transition-colors duration-200">Contato</li>
+  </ul>
+
+  <!-- Botão Mobile com 3 Barrinhas -->
+  <div class="md:hidden z-50" (click)="toggleMobileMenu()">
+    <div class="space-y-1 cursor-pointer">
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
+        [ngClass]="{ 'rotate-45 translate-y-2': mobileMenuOpen }"></div>
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
+        [ngClass]="{ 'opacity-0': mobileMenuOpen }"></div>
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
+        [ngClass]="{ '-rotate-45 -translate-y-2': mobileMenuOpen }"></div>
     </div>
-  
-    <ul class="hidden md:flex gap-6 text-sm text-2xl font-bold text-[#e3c9ee]">
-      <li class="hover:text-white cursor-pointer">Home</li>
-      <li class="hover:text-white cursor-pointer">Marketplace</li>
-      <li class="hover:text-white cursor-pointer">Sobre</li>
-      <li class="hover:text-white cursor-pointer">Contato</li>
-    </ul>
+  </div>
+
+  <!-- Menu Mobile com animação -->
+  <div
+    class="md:hidden absolute top-16 left-0 w-full bg-[#1a1a1a] border-t border-[#2a2a2a] text-[#e3c9ee] text-lg font-semibold flex flex-col items-center gap-6 py-8 transform transition-transform duration-500 ease-in-out z-40"
+    [ngClass]="{
+      'translate-y-0 opacity-100 scale-100': mobileMenuOpen,
+      '-translate-y-[200%] opacity-0 scale-90': !mobileMenuOpen
+    }"
+  >
+    <a class="hover:text-white cursor-pointer transition-all">Home</a>
+    <a class="hover:text-white cursor-pointer transition-all">Marketplace</a>
+    <a class="hover:text-white cursor-pointer transition-all">Sobre</a>
+    <a class="hover:text-white cursor-pointer transition-all">Contato</a>
+    <a class="hover:text-white cursor-pointer transition-all">Solicitar Projeto</a>
+  </div>
 </nav>
