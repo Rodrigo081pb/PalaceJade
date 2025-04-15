@@ -1,11 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LogoComponent } from '../logo/logo.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [LogoComponent, NgIf],
+  imports: [LogoComponent],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })

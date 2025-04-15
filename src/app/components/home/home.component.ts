@@ -11,12 +11,41 @@ import { LinkstreeComponent } from "../cards/linkstree/linkstree.component";
 import { FooterComponent } from "../footer/footer.component";
 import { ComercialComponent } from "../comercial/comercial.component";
 import { BotsTelegramComponent } from "../cards/bots-telegram/bots-telegram.component";
+import { CategoriasComponent } from '../categorias/categorias.component';
+import { LoveComponent } from "../cards/love/love.component"; // Atenção aqui!
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, WhatsappComponent, SistemaAgendamentoComponent, LandingPagesComponent, DesignComponent, CardapioFoodsComponent, OrcamentoComponent, LinkstreeComponent, FooterComponent, ComercialComponent, BotsTelegramComponent],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    WhatsappComponent,
+    SistemaAgendamentoComponent,
+    LandingPagesComponent,
+    DesignComponent,
+    CardapioFoodsComponent,
+    OrcamentoComponent,
+    LinkstreeComponent,
+    FooterComponent,
+    ComercialComponent,
+    BotsTelegramComponent,
+    CategoriasComponent // <-- Não esqueça disso!
+    ,
+    LoveComponent
+],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {}
+export class HomeComponent {
+
+  categoriaAtiva: string = '';
+
+  filtrarCategoria(categoria: string) {
+    this.categoriaAtiva = categoria;
+  }
+
+  verificarCategoria(categoria: string): boolean {
+    return this.categoriaAtiva === categoria || this.categoriaAtiva === '';
+  }
+}
