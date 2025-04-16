@@ -17,7 +17,7 @@ export const routes: Routes = [
       import('./pages/categoria/sistema-agendamento/sistema-agendamento.component').then(m => m.SistemaAgendamentoComponent)
   },
   {
-    path: 'categoria/lojas-virtuais',
+    path: 'categoria/lojas',
     loadComponent: () =>
       import('./pages/categoria/lojas-virtuais/lojas-virtuais.component').then(m => m.LojasVirtuaisComponent)
   },
