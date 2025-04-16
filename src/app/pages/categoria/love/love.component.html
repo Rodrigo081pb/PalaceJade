@@ -1,1 +1,74 @@
-<p>love works!</p>
+<section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 relative overflow-hidden animate-fade-in">
+
+  <!-- Flores Animadas -->
+  <div class="flex items-center gap-4 mb-10">
+    <i class="fas fa-heart text-red-400 text-3xl animate-pulse"></i>
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Projetos que tocam o coração</h1>
+      <p class="text-sm text-[#aaa]">Transforme sentimentos em experiências digitais inesquecíveis.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Card 1 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-ring text-pink-400 text-xl"></i>
+        <h2 class="text-xl font-semibold">Pedido de Namoro Interativo</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Uma página especial com história, efeitos e botão mágico para dizer "Sim".</p>
+      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-music text-pink-400 text-xl"></i>
+        <h2 class="text-xl font-semibold">Polaroid com Música</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Fotos em formato polaroid com trilha sonora para emocionar.</p>
+      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fa-solid fa-envelope text-pink-400 text-xl"></i>
+        <h2 class="text-xl font-semibold">Carta de Amor com Áudio</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Transforme sua voz e suas palavras em algo eterno e digital.</p>
+      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-seedling text-pink-400 text-xl"></i>
+        <h2 class="text-xl font-semibold">Flores Digitais</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Flores surgem na tela ao entrar no link. Encantador, leve e mágico.</p>
+      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fa-solid fa-film text-pink-400 text-xl"></i>
+        <h2 class="text-xl font-semibold">Caixa de Memórias</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Um mural com datas, fotos, vídeos e mensagens. Pra guardar pra sempre.</p>
+      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+    </div>
+
+    <!-- Card Coringa -->
+    <app-joker-card
+      [categoria]="'Love'"
+      (abrirModal)="abrirModalIdeia()">
+    </app-joker-card>
+  </div>
+
+  <!-- Modais -->
+  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Love'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+</section>
