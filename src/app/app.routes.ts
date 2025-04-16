@@ -12,7 +12,7 @@ export const routes: Routes = [
       import('./pages/categoria/whatsapp/whatsapp.component').then(m => m.WhatsappComponent)
   },
   {
-    path: 'categoria/sistema-agendamento',
+    path: 'categoria/agendamento',
     loadComponent: () =>
       import('./pages/categoria/sistema-agendamento/sistema-agendamento.component').then(m => m.SistemaAgendamentoComponent)
   },

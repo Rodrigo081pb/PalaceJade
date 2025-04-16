@@ -1,0 +1,75 @@
+<div *ngIf="aberto" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
+  <div @modalAnim class="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-6 w-[90%] max-w-md shadow-xl text-white text-sm">
+
+    <!-- Logo Centralizada e Ampliada -->
+    <div class="flex justify-center mb-2">
+      <app-logo class="scale-[1.2]"></app-logo>
+    </div>
+
+    <br>
+
+    <h3 class="text-xl font-bold text-center mb-4">Tem uma ideia? Compartilha com a gente</h3>
+
+    <!-- Etapa 1: Formulário -->
+    <div *ngIf="etapa === 1" class="flex flex-col gap-4">
+
+      <p class="text-[#ccc] text-center">O que esse projeto envolve?</p>
+
+      <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Agendamento')"> Agendamento
+        </label>
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Catálogo')"> Catálogo
+        </label>
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('ChatBot')"> ChatBot
+        </label>
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Formulários')"> Formulários
+        </label>
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Automação')"> Automação
+        </label>
+
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Automação')"> Design
+        </label>
+
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Automação')"> Social Media
+        </label>
+
+        <label class="flex gap-2 items-center">
+          <input type="checkbox" (change)="toggleOpcao('Outro')"> Outro
+        </label>
+      </div>
+
+      <textarea [(ngModel)]="mensagem" placeholder="Mensagem opcional..." rows="4"
+                class="w-full bg-[#1f1f1f] border border-[#333] rounded p-3 text-white resize-none focus:outline-none"></textarea>
+
+      <button class="btn w-full" (click)="avancarEtapa()">Avançar</button>
+      <button class="text-purple-400 text-xs hover:underline mx-auto" (click)="fechar()">Cancelar</button>
+    </div>
+
+    <!-- Etapa 2: Escolher canal -->
+    <div *ngIf="etapa === 2" class="flex flex-col gap-4 animate-fade-in">
+      <p class="text-[#ccc] text-center mb-2">Por onde você quer enviar sua ideia?</p>
+
+      <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded w-full" (click)="enviarMensagem('whatsapp')">
+        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+      </button>
+
+      <button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 px-4 py-2 rounded w-full"
+              (click)="enviarMensagem('instagram')">
+        <i class="fab fa-instagram mr-2"></i> Instagram
+      </button>
+
+      <button class="bg-[#2e2e2e] hover:bg-purple-600 px-4 py-2 rounded w-full" (click)="enviarMensagem('email')">
+        <i class="fas fa-envelope mr-2"></i> E-mail
+      </button>
+
+      <button class="text-purple-400 text-xs hover:underline mx-auto" (click)="voltarEtapa()">Voltar</button>
+    </div>
+  </div>
+</div>

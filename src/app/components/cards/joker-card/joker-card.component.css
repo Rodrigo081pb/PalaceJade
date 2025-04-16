@@ -1,0 +1,12 @@
+.card-coringa {
+  background: linear-gradient(to bottom right, #1f1f1f, #2a2a2a);
+  border: 1px solid #7c3aed;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-coringa:hover {
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+  transform: scale(1.01);
+}
