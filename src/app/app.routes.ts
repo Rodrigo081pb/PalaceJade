@@ -45,5 +45,5 @@ export const routes: Routes = [
     path: 'categoria/love',
     loadComponent: () =>
       import('./pages/categoria/love/love.component').then(m => m.LoveComponent)
-  }
+  },
 ];
