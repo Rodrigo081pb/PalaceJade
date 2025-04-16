@@ -32,7 +32,7 @@ export const routes: Routes = [
       import('./pages/categoria/cardapio-digital/cardapio-digital.component').then(m => m.CardapioDigitalComponent)
   },
   {
-    path: 'categoria/linktree',
+    path: 'categoria/link',
     loadComponent: () =>
       import('./pages/categoria/linktree/linktree.component').then(m => m.LinktreeComponent)
   },

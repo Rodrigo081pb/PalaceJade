@@ -10,74 +10,74 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <!-- Card 1: Loja com Catálogo + WhatsApp -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 min-h-[260px] flex flex-col justify-between hover:border-purple-600 transition">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <i class="fas fa-box-open text-purple-400 text-xl"></i>
-          <h2 class="text-xl font-semibold text-white">Loja com Catálogo e WhatsApp</h2>
-        </div>
-        <p class="text-sm text-[#ccc] mb-4">
-          Página com exibição de produtos e botão direto pro WhatsApp. Ideal pra vendas rápidas e personalizadas.
-        </p>
+    <!-- Card 1 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-box-open text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Loja com Catálogo e WhatsApp</h2>
       </div>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+      <p class="text-sm text-[#ccc] mb-4">
+        Página com exibição de produtos e botão direto pro WhatsApp. Ideal pra vendas rápidas e personalizadas.
+      </p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      </div>
     </div>
 
-    <!-- Card 2: Carrinho com Pagamento PIX -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 min-h-[260px] flex flex-col justify-between hover:border-purple-600 transition">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <i class="fas fa-shopping-cart text-purple-400 text-xl"></i>
-          <h2 class="text-xl font-semibold text-white">Carrinho + Pagamento Pix</h2>
-        </div>
-        <p class="text-sm text-[#ccc] mb-4">
-          Estrutura de e-commerce simples com carrinho, checkout e integração com pagamento via Pix.
-        </p>
+    <!-- Card 2 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-shopping-cart text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Carrinho + Pagamento Pix</h2>
       </div>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+      <p class="text-sm text-[#ccc] mb-4">
+        Estrutura de e-commerce simples com carrinho, checkout e integração com pagamento via Pix.
+      </p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      </div>
     </div>
 
-    <!-- Card 3: Site para Produto Único -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 min-h-[260px] flex flex-col justify-between hover:border-purple-600 transition">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <i class="fas fa-cube text-purple-400 text-xl"></i>
-          <h2 class="text-xl font-semibold text-white">Produto Único com Checkout</h2>
-        </div>
-        <p class="text-sm text-[#ccc] mb-4">
-          Página focada em um único produto com apresentação visual, descrição e botão de compra.
-        </p>
+    <!-- Card 3 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-cube text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Produto Único com Checkout</h2>
       </div>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+      <p class="text-sm text-[#ccc] mb-4">
+        Página focada em um único produto com apresentação visual, descrição e botão de compra.
+      </p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      </div>
     </div>
 
-    <!-- Card 4: Loja com Agendamento -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 min-h-[260px] flex flex-col justify-between hover:border-purple-600 transition">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <i class="fas fa-calendar-check text-purple-400 text-xl"></i>
-          <h2 class="text-xl font-semibold text-white">Loja com Agendamento</h2>
-        </div>
-        <p class="text-sm text-[#ccc] mb-4">
-          Ideal para prestadores de serviço: escolha do pacote + data + pagamento direto.
-        </p>
+    <!-- Card 6: Loja para Infoprodutos -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-book text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Loja para Infoprodutos</h2>
       </div>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+      <p class="text-sm text-[#ccc] mb-4">
+        Plataforma para vender cursos, ebooks e materiais digitais com integração de pagamento.
+      </p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      </div>
     </div>
 
-    <!-- Card 5: Cardápio Virtual para Restaurantes -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 min-h-[260px] flex flex-col justify-between hover:border-purple-600 transition">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <i class="fas fa-utensils text-purple-400 text-xl"></i>
-          <h2 class="text-xl font-semibold text-white">Cardápio Virtual com Pedido</h2>
-        </div>
-        <p class="text-sm text-[#ccc] mb-4">
-          Exiba pratos e bebidas em um cardápio interativo com pedidos diretos no WhatsApp.
-        </p>
+    <!-- Card 8: Landing Page com Captura de Leads -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-user-plus text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Landing Page para Leads</h2>
       </div>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
+      <p class="text-sm text-[#ccc] mb-4">
+        Página com formulário de captura de e-mail/telefone para impulsionar suas vendas ou lançamentos.
+      </p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      </div>
     </div>
 
     <!-- Card Coringa -->
@@ -91,4 +91,3 @@
   <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
   <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Lojas Virtuais'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
 </section>
-
