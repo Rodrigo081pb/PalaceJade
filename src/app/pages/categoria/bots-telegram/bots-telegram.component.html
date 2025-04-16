@@ -1,1 +1,86 @@
-<p>bots-telegram works!</p>
+<section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
+  <!-- Cabeçalho -->
+  <div class="flex flex-col items-center text-center gap-4 mb-10">
+    <i class="fab fa-telegram-plane text-purple-400 text-4xl animate-bounce"></i>
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Bots para Telegram</h1>
+      <p class="text-sm text-[#aaa]">Automatize tarefas, melhore seu atendimento e amplie seu alcance com bots personalizados.</p>
+    </div>
+  </div>
+
+  <!-- Grid de cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Card 1 -->
+    <div class="bot-card">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-bolt text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Bot de Respostas Rápidas</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Responda automaticamente perguntas frequentes no Telegram com comandos personalizados.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bot-card">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-users-cog text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Bot para Grupos</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Moderação, boas-vindas automáticas, regras e comandos úteis para grupos no Telegram.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bot-card">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-store text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Bot de Loja Virtual</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Venda diretamente pelo Telegram com navegação por produtos, carrinho e pedidos automáticos.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bot-card">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-chart-line text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Bot de Relatórios</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Receba relatórios automatizados com gráficos e dados diretamente no seu Telegram.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="bot-card">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-paper-plane text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Bot de Envio de Conteúdo</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Programe posts e notificações para seus grupos ou canais no Telegram de forma automática.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+      <!-- Card Coringa -->
+      <div class="md:col-span-2">
+        <app-joker-card
+          [categoria]="'Bots de Telegram'"
+          (abrirModal)="abrirModalIdeia()">
+        </app-joker-card>
+      </div>
+
+  </div>
+
+  <!-- Modais -->
+  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Bots Telegram'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+</section>

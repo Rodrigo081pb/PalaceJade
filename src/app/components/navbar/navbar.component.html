@@ -5,27 +5,24 @@
     <span class="text-xl md:text-2xl font-bold text-[#e3c9ee]">HIKARUZ</span>
   </div>
 
-  <!-- Menu Desktop (com estilo minimalista) -->
+  <!-- Menu Desktop -->
   <ul class="hidden md:flex gap-6 text-sm md:text-base font-medium text-[#e3c9ee]">
-    <li class="hover:text-white cursor-pointer transition-colors duration-200">Home</li>
-    <li class="hover:text-white cursor-pointer transition-colors duration-200">Marketplace</li>
-    <li class="hover:text-white cursor-pointer transition-colors duration-200">Sobre</li>
-    <li class="hover:text-white cursor-pointer transition-colors duration-200">Contato</li>
+    <li routerLink="/home" class="hover:text-white cursor-pointer transition-colors duration-200">Home</li>
+    <li routerLink="/home" class="hover:text-white cursor-pointer transition-colors duration-200">Marketplace</li>
+    <li (click)="scrollTo('footer')" class="hover:text-white cursor-pointer transition-colors duration-200">Sobre</li>
+    <li (click)="abrirModal()" class="hover:text-white cursor-pointer transition-colors duration-200">Contato</li>
   </ul>
 
-  <!-- Botão Mobile com 3 Barrinhas -->
+  <!-- Botão Mobile -->
   <div class="md:hidden z-50" (click)="toggleMobileMenu()">
     <div class="space-y-1 cursor-pointer">
-      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
-        [ngClass]="{ 'rotate-45 translate-y-2': mobileMenuOpen }"></div>
-      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
-        [ngClass]="{ 'opacity-0': mobileMenuOpen }"></div>
-      <div class="w-6 h-1 bg-white rounded transition-all duration-300"
-        [ngClass]="{ '-rotate-45 -translate-y-2': mobileMenuOpen }"></div>
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300" [ngClass]="{ 'rotate-45 translate-y-2': mobileMenuOpen }"></div>
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300" [ngClass]="{ 'opacity-0': mobileMenuOpen }"></div>
+      <div class="w-6 h-1 bg-white rounded transition-all duration-300" [ngClass]="{ '-rotate-45 -translate-y-2': mobileMenuOpen }"></div>
     </div>
   </div>
 
-  <!-- Menu Mobile com animação -->
+  <!-- Menu Mobile -->
   <div
     class="md:hidden absolute top-16 left-0 w-full bg-[#1a1a1a] border-t border-[#2a2a2a] text-[#e3c9ee] text-lg font-semibold flex flex-col items-center gap-6 py-8 transform transition-transform duration-500 ease-in-out z-40"
     [ngClass]="{
@@ -33,10 +30,11 @@
       '-translate-y-[200%] opacity-0 scale-90': !mobileMenuOpen
     }"
   >
-    <a class="hover:text-white cursor-pointer transition-all">Home</a>
-    <a class="hover:text-white cursor-pointer transition-all">Marketplace</a>
-    <a class="hover:text-white cursor-pointer transition-all">Sobre</a>
-    <a class="hover:text-white cursor-pointer transition-all">Contato</a>
-    <a class="hover:text-white cursor-pointer transition-all">Solicitar Projeto</a>
+    <a routerLink="/home" (click)="fecharMenu()" class="hover:text-white transition-all">Home</a>
+    <a routerLink="/home#marketplace" (click)="fecharMenu()" class="hover:text-white transition-all">Marketplace</a>
+    <a (click)="scrollTo('footer'); fecharMenu()" class="hover:text-white transition-all">Sobre</a>
+    <a (click)="abrirModal(); fecharMenu()" class="hover:text-white transition-all">Contato</a>
   </div>
 </nav>
+
+<app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>

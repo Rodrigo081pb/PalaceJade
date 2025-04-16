@@ -1,7 +1,8 @@
 <section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
-  <!-- Cabeçalho -->
-  <div class="flex flex-col md:flex-row md:items-center md:gap-4 mb-10">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10 h-10 text-purple-500 animate-bounce mb-2 md:mb-0" viewBox="0 0 24 24" stroke="currentColor">
+
+  <!-- Cabeçalho centralizado -->
+  <div class="flex flex-col items-center text-center gap-4 mb-10">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10 h-10 text-purple-500 animate-bounce" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m-14 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
     </svg>
     <div>
@@ -11,97 +12,35 @@
   </div>
 
   <!-- Grid dos cards -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <!-- Card 1 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-cut text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Agendamento para Salões</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+    <div *ngFor="let card of cards"
+        class="bg-[#1a1a1a] border border-[#2a2a2a] p-6 rounded-xl hover:border-purple-600 transition flex flex-col justify-between h-full">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <i class="{{ card.icone }} text-purple-400 text-xl"></i>
+          <h2 class="text-xl font-semibold text-white">{{ card.titulo }}</h2>
+        </div>
+        <p class="text-sm text-[#ccc] mb-4">{{ card.descricao }}</p>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">Clientes marcam cortes ou serviços com data/hora pelo link. Confirmações automáticas no WhatsApp.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-stethoscope text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Consultas Médicas ou Terapias</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Pacientes agendam consultas com envio de lembretes automáticos e link para chamada.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+      <div class="flex gap-3 mt-auto">
+        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">
+          Solicitar Projeto
+        </button>
       </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-chalkboard-teacher text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Aulas, Mentorias ou Coaching</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Crie seu sistema de agendamento de sessões com envio de links para Zoom/Google Meet automaticamente.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-camera-retro text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Sessões de Fotos</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Clientes escolhem pacotes e horários. Ideal para fotógrafos, estúdios e criadores de conteúdo.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-birthday-cake text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Eventos e RSVP</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Convidados confirmam presença automaticamente, recebem lembretes e localização do evento.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-3">
-        <i class="fas fa-laptop-code text-purple-400 text-xl"></i>
-        <h2 class="text-lg font-semibold">Agendamento para Freelancers</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Ideal para designers, programadores e criativos. Facilita orçamentos e reuniões com leads.</p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
+    <!-- Card Coringa -->
+    <div class="md:col-span-2">
+      <app-joker-card
+        [categoria]="'Sistema de Agendamentos'"
+        (abrirModal)="abrirModalIdeia()">
+      </app-joker-card>
     </div>
 
   </div>
 
-  <app-joker-card
-    [categoria]="'Agendamentos'"
-    (abrirModal)="abrirModalIdeia()">
-  </app-joker-card>
-
-  <app-modal-ideia
-    [aberto]="modalIdeiaAberto"
-    [categoria]="'WhatsApp'"
-    [fechar]="fecharModalIdeia.bind(this)">
-  </app-modal-ideia>
-
-  <!-- Modal com animação -->
-  <app-modal-contato
-  [aberto]="modalAberto"
-  [fechar]="fecharModal.bind(this)">
-  </app-modal-contato>
+  <!-- Modais -->
+  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Agendamentos'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
 
 </section>

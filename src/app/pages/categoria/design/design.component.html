@@ -1,6 +1,6 @@
 <section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
 
-  <div class="flex items-center gap-4 mb-10">
+  <div class="flex flex-col items-center text-center gap-4 mb-10">
     <i class="fas fa-pencil-ruler text-purple-400 text-3xl"></i>
     <div>
       <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Soluções em Design</h1>
@@ -190,11 +190,14 @@
       </div>
     </div>
 
-    <!-- Coringa -->
-    <app-joker-card
-      [categoria]="'Design'"
-      (abrirModal)="abrirModalIdeia()">
-    </app-joker-card>
+    <!-- Card Coringa -->
+    <div class="md:col-span-2">
+      <app-joker-card
+        [categoria]="'Design'"
+        (abrirModal)="abrirModalIdeia()">
+      </app-joker-card>
+    </div>
+
   </div>
 
   <!-- Modais -->

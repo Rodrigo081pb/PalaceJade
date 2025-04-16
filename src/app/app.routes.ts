@@ -37,7 +37,7 @@ export const routes: Routes = [
       import('./pages/categoria/linktree/linktree.component').then(m => m.LinktreeComponent)
   },
   {
-    path: 'categoria/bots-telegram',
+    path: 'categoria/bots',
     loadComponent: () =>
       import('./pages/categoria/bots-telegram/bots-telegram.component').then(m => m.BotsTelegramComponent)
   },

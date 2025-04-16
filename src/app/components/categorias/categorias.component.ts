@@ -14,7 +14,7 @@ export class CategoriasComponent {
   categorias = [
     'Todos',
     'WhatsApp',
-    'Agendamentos',
+    'Agenda',
     'Lojas Virtuais',
     'Design',
     'Cardápio Digital',

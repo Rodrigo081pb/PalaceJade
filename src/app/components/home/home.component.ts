@@ -11,6 +11,7 @@ import { ComercialComponent } from "../comercial/comercial.component";
 import { BotsTelegramComponent } from "../cards/bots-telegram/bots-telegram.component";
 import { CategoriasComponent } from '../categorias/categorias.component';
 import { LoveComponent } from "../cards/love/love.component"; // Atenção aqui!
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,13 +22,13 @@ import { LoveComponent } from "../cards/love/love.component"; // Atenção aqui!
     SistemaAgendamentoComponent,
     LandingPagesComponent,
     DesignComponent,
+    RouterModule,
     CardapioFoodsComponent,
     OrcamentoComponent,
     LinkstreeComponent,
     ComercialComponent,
     BotsTelegramComponent,
-    CategoriasComponent // <-- Não esqueça disso!
-    ,
+    CategoriasComponent,
     LoveComponent
 ],
   templateUrl: './home.component.html',

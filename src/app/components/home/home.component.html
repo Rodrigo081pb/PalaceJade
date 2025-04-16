@@ -1,8 +1,8 @@
 <app-comercial></app-comercial>
 
-<section class="px-6 py-10 bg-[#0e0e0e] min-h-screen text-white">
+<section id="marketplace" class="px-6 py-10 bg-[#0e0e0e] min-h-screen text-white">
 
-  <!-- Título impactante -->
+  <!-- Título -->
   <h1 class="text-4xl font-bold text-[#e3c9ee] mb-2 tracking-tight">
     Descubra projetos feitos para encantar
   </h1>
@@ -10,23 +10,49 @@
     Selecione uma categoria abaixo e explore soluções criativas que podem transformar seu negócio — ou surpreender alguém especial. ✨
   </p>
 
-  <!-- Filtro de Categorias -->
+  <!-- Filtro -->
   <div class="flex justify-start md:justify-start mb-10">
     <app-categorias (categoriaChange)="filtrarCategoria($event)"></app-categorias>
   </div>
 
-  <!-- Grid de Cards -->
+  <!-- Grid de Cards com links -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <app-whatsapp *ngIf="verificarCategoria('WhatsApp')"></app-whatsapp>
-    <app-sistema-agendamento *ngIf="verificarCategoria('Agendamentos')"></app-sistema-agendamento>
-    <app-landing-pages *ngIf="verificarCategoria('Lojas Virtuais')"></app-landing-pages>
-    <app-design *ngIf="verificarCategoria('Design')"></app-design>
-    <app-cardapio-foods *ngIf="verificarCategoria('Cardápio Digital')"></app-cardapio-foods>
-    <app-linkstree *ngIf="verificarCategoria('Linktree')"></app-linkstree>
-    <app-bots-telegram *ngIf="verificarCategoria('Bots Telegram')"></app-bots-telegram>
-    <app-love *ngIf="verificarCategoria('Projetos para o seu amor')"></app-love>
-    <app-orcamento *ngIf="verificarCategoria('Outros')"></app-orcamento>
+    <a *ngIf="verificarCategoria('WhatsApp')" [routerLink]="'/categoria/whatsapp'" class="block">
+      <app-whatsapp></app-whatsapp>
+    </a>
+
+    <a *ngIf="verificarCategoria('Agenda')" [routerLink]="'/categoria/agendamento'" class="block">
+      <app-sistema-agendamento></app-sistema-agendamento>
+    </a>
+
+    <a *ngIf="verificarCategoria('Lojas Virtuais')" [routerLink]="'/categoria/lojas'" class="block">
+      <app-landing-pages></app-landing-pages>
+    </a>
+
+    <a *ngIf="verificarCategoria('Design')" [routerLink]="'/categoria/design'" class="block">
+      <app-design></app-design>
+    </a>
+
+    <a *ngIf="verificarCategoria('Cardápio Digital')" [routerLink]="'/categoria/cardapio'" class="block">
+      <app-cardapio-foods></app-cardapio-foods>
+    </a>
+
+    <a *ngIf="verificarCategoria('Linktree')" [routerLink]="'/categoria/link'" class="block">
+      <app-linkstree></app-linkstree>
+    </a>
+
+    <a *ngIf="verificarCategoria('Bots Telegram')" [routerLink]="'/categoria/bots'" class="block">
+      <app-bots-telegram></app-bots-telegram>
+    </a>
+
+    <a *ngIf="verificarCategoria('Projetos para o seu amor')" [routerLink]="'/categoria/love'" class="block">
+      <app-love></app-love>
+    </a>
+
+    <a *ngIf="verificarCategoria('Outros')" [routerLink]="'/orcamento'" class="block">
+      <app-orcamento></app-orcamento>
+    </a>
 
   </div>
 </section>

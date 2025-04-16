@@ -1,1 +1,123 @@
-<p>cardapio-digital works!</p>
+
+<section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
+
+  <div class="flex flex-col items-center text-center gap-4 mb-10">
+    <i class="fas fa-utensils text-purple-400 text-3xl"></i>
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Cardápios Digitais</h1>
+      <p class="text-sm text-[#aaa]">Modernize seu atendimento com soluções digitais personalizadas.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Restaurante Completo -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-concierge-bell text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Restaurante Completo</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Cardápio digital com imagens, categorias, preços e pedido via WhatsApp.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Pizzaria com Sabores e Bordas -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-pizza-slice text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Pizzaria com Personalização</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Escolha de sabores, tamanho, bordas e envio automático pro atendente.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Hamburgueria com Montagem -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-hamburger text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Hamburgueria Personalizada</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Cliente escolhe pão, carne, adicionais e envia tudo com 1 clique no WhatsApp.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Delivery Express -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-motorcycle text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Delivery Express</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Pedidos rápidos com CEP, produtos e botão de envio sem cadastro.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- QR Code para Mesas -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-qrcode text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">QR Code para Mesas</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Clientes escaneiam e acessam o cardápio direto da mesa — rápido e higiênico.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Food Truck Mobile -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-truck text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Food Truck Interativo</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Cardápio simples e direto pro celular com botão de chamada rápida.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Lanchonete Simples -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-bread-slice text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Lanchonete com Catálogo</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Lista de combos, sucos, lanches, com imagem e botão de pedido automático.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Padaria ou Pastelaria -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-cookie-bite text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Padaria ou Pastelaria</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Visualização de produtos com estoque diário e atendimento ágil.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Card Coringa -->
+    <div class="md:col-span-2">
+      <app-joker-card
+        [categoria]="'Cardápios Digitais'"
+        (abrirModal)="abrirModalIdeia()">
+      </app-joker-card>
+    </div>
+
+  </div>
+
+  <!-- Modais -->
+  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Cardápio Digital'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+</section>
