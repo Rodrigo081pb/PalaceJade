@@ -50,9 +50,9 @@
       <app-love></app-love>
     </a>
 
-    <a *ngIf="verificarCategoria('Outros')" [routerLink]="'/orcamento'" class="block">
+    <div *ngIf="verificarCategoria('Outros')" class="block">
       <app-orcamento></app-orcamento>
-    </a>
+    </div>
 
   </div>
 </section>

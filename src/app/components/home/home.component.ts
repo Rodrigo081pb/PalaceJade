@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
     ComercialComponent,
     BotsTelegramComponent,
     CategoriasComponent,
-    LoveComponent
+    LoveComponent,
 ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
