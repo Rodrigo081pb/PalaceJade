@@ -3,95 +3,106 @@
   <div class="flex items-center gap-4 mb-10">
     <i class="fas fa-link text-purple-400 text-3xl"></i>
     <div>
-      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Linktree Personalizado</h1>
-      <p class="text-sm text-[#aaa]">Reúna seus links em uma única página com identidade, estilo e conversão.</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Linktree</h1>
+      <p class="text-sm text-[#aaa]">Segmentado por nicho, com agendamento, redes sociais e presença digital completa.</p>
     </div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <!-- Card 1 -->
+    <!-- 1. Salão de Beleza -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-user text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Link na Bio para Instagram</h2>
+        <i class="fas fa-scissors text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Salão de Beleza</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Página otimizada para links de redes sociais com seu branding e identidade visual.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Agenda online, Instagram, localização e botão de contato direto.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 
-    <!-- Card 2 -->
+    <!-- 2. Barbearia -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-tags text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Linktree com Categorias</h2>
+        <i class="fas fa-briefcase text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Barbearia</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Organize seus links por categorias, como vídeos, cursos, contatos, e mais.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Agendamento, cortes em destaque, avaliações e redes sociais.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 
-
-    <!-- Card 5 -->
+    <!-- 3. Estúdio de Tatuagem -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-mobile-alt text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Linktree Responsivo</h2>
+        <i class="fas fa-pen-nib text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Estúdio de Tatuagem</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Totalmente adaptado a celulares, com carregamento rápido e foco em usabilidade.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Portfólio, link pro Insta, orçamento e formulário de agendamento.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 
-    <!-- Card 6 -->
+    <!-- 4. Restaurante / Lanchonete -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-file-alt text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Currículo ou Portfólio</h2>
+        <i class="fas fa-hamburger text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Restaurante / Lanchonete</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Um link com apresentação de projetos, skills e contato direto pro RH ou clientes.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Cardápio interativo, WhatsApp para pedidos e localização.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 
-    <!-- Card 7 -->
+    <!-- 5. Loja de Roupas -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-qrcode text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Linktree com QR Code</h2>
+        <i class="fas fa-tshirt text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Loja de Roupas</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Gere um QR Code estilizado pra compartilhar seu Linktree em cartões, vitrines ou eventos.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Destaque de coleções, botão de pedido e link pro Instagram da loja.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 
-    <!-- Card 8 -->
+    <!-- 6. Criador de Conteúdo -->
     <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
       <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-plus-circle text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Linktree Multi-Perfil</h2>
+        <i class="fas fa-video text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Criador de Conteúdo</h2>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Gerencie diferentes perfis e grupos de links no mesmo painel, alternando com um clique.
-      </p>
+      <p class="text-sm text-[#ccc] mb-4">Links para vídeos, cursos, redes sociais e área de comunidade.</p>
       <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 7. Psicólogo / Terapeuta -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-brain text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Profissional da Saúde</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Agendamento, redes sociais e formulário de pré-atendimento.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 8. Artista / Músico -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-guitar text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Artista / Músico</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Spotify, agenda de shows, portfólio, contato para eventos.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
       </div>
     </div>
 

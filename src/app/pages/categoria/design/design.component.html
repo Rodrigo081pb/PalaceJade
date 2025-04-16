@@ -1,1 +1,203 @@
-<p>design works!</p>
+<section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
+
+  <div class="flex items-center gap-4 mb-10">
+    <i class="fas fa-pencil-ruler text-purple-400 text-3xl"></i>
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Soluções em Design</h1>
+      <p class="text-sm text-[#aaa]">Criações que encantam, vendem e transmitem sua essência.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- 1 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-pen-nib text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Criação de Logo Profissional</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Marca visual única e memorável com conceito, tipografia e aplicação.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-image text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Identidade Visual Completa</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Cores, fontes, aplicações e guia para tornar sua marca forte e coerente.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-layer-group text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Redesign de Marca</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Atualize sua logo ou identidade sem perder sua essência.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-palette text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Paleta de Cores e Tipografia</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Tenha harmonia visual com tons e fontes alinhados ao seu propósito.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-ad text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Posts para Instagram (Feed e Story)</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Artes criativas e profissionais para atrair atenção e engajamento.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-video text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Thumbnail para Vídeos</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Capas que destacam e aumentam cliques nos seus vídeos no YouTube.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-id-badge text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Cartão de Visita Digital ou Físico</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Design elegante e profissional com QR Code, contatos e redes.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-globe text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Layout para Site ou Landing Page</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Crie a estrutura visual do seu site com foco em conversão e estética.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-mug-hot text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Mockup para Produto ou Brinde</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Simule sua logo em canecas, camisetas, banners ou sacolas.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-chalkboard-teacher text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Apresentação Profissional (Pitch / Slide)</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Visual envolvente pra sua proposta, curso ou reunião de negócios.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-certificate text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Certificado Digital Personalizado</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Ideal pra cursos, eventos ou premiações. Com QR Code e assinatura.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-envelope-open-text text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Cartão de Agradecimento / Convite</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Perfeito pra clientes, aniversários, formaturas ou lançamentos.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-chart-pie text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Dashboard de Dados (Estético)</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Visual moderno para relatórios, analytics ou painéis internos.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-scroll text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Design para Landing Romântica / Criativa</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Página de presente, pedido de namoro ou homenagem. Criativa e tocante.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+      <div class="flex items-center gap-3 mb-4">
+        <i class="fas fa-magic text-purple-400 text-xl"></i>
+        <h2 class="text-xl font-semibold text-white">Design Personalizado do Seu Jeito</h2>
+      </div>
+      <p class="text-sm text-[#ccc] mb-4">Fale sua ideia e criaremos juntos algo único, original e memorável.</p>
+      <div class="flex gap-3">
+        <button (click)="abrirModal()" class="btn">Solicitar Projeto</button>
+      </div>
+    </div>
+
+    <!-- Coringa -->
+    <app-joker-card
+      [categoria]="'Design'"
+      (abrirModal)="abrirModalIdeia()">
+    </app-joker-card>
+  </div>
+
+  <!-- Modais -->
+  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Design'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+</section>

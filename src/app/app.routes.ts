@@ -27,7 +27,7 @@ export const routes: Routes = [
       import('./pages/categoria/design/design.component').then(m => m.DesignComponent)
   },
   {
-    path: 'categoria/cardapio-digital',
+    path: 'categoria/cardapio',
     loadComponent: () =>
       import('./pages/categoria/cardapio-digital/cardapio-digital.component').then(m => m.CardapioDigitalComponent)
   },
