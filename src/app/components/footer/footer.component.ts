@@ -1,10 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LogoComponent } from '../logo/logo.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [LogoComponent],
+  imports: [LogoComponent, RouterLink],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
