@@ -7,11 +7,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-modal-ideia',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    LogoComponent,
-  ],
+  imports: [CommonModule, FormsModule, LogoComponent],
   templateUrl: './modal-ideia.component.html',
   styleUrls: ['./modal-ideia.component.css'],
   animations: [
@@ -34,12 +30,12 @@ export class ModalIdeiaComponent {
 
   etapa: number = 1;
   nome: string = '';
+  numero: string = '';
   empreendedor: string = '';
   mensagem: string = '';
   erro: string = '';
-  opcoesSelecionadas: string[] = [];
-
   enviado: boolean = false;
+  opcoesSelecionadas: string[] = [];
 
   opcoes: string[] = [
     'Agendamento',
@@ -63,19 +59,37 @@ export class ModalIdeiaComponent {
   avancarEtapa() {
     this.erro = '';
 
-    if (!this.nome.trim() || this.opcoesSelecionadas.length === 0) {
+    if (!this.nome.trim() || !this.numero.trim() || this.opcoesSelecionadas.length === 0) {
       this.erro = 'Por favor, preencha todos os campos obrigatórios com informações válidas.';
       return;
     }
 
+    this.enviarEmail();
     this.etapa = 2;
+
+    setTimeout(() => {
+      this.etapa = 3;
+    }, 2000);
   }
 
-  confirmarEnvio() {
-    this.etapa = 3;
-    setTimeout(() => {
-      this.enviado = true;
-    }, 800);
+  enviarEmail() {
+    fetch("https://formsubmit.co/ajax/kauarodrigo1193@gmail.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: this.nome,
+        numero: this.numero,
+        empreendedor: this.empreendedor,
+        opcoes: this.opcoesSelecionadas.join(', '),
+        mensagem: this.mensagem,
+        categoria: this.categoria
+      })
+    }).then(r => r.json())
+      .then(data => console.log("E-mail enviado com sucesso:", data))
+      .catch(error => console.error("Erro ao enviar e-mail:", error));
   }
 
   irParaContato() {
@@ -91,10 +105,12 @@ export class ModalIdeiaComponent {
   resetar() {
     this.etapa = 1;
     this.nome = '';
+    this.numero = '';
     this.empreendedor = '';
     this.mensagem = '';
     this.opcoesSelecionadas = [];
     this.erro = '';
     this.enviado = false;
+    this.fechar(); // fecha modal
   }
 }
