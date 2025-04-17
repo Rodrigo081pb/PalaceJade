@@ -12,6 +12,8 @@ import { BotsTelegramComponent } from "../cards/bots-telegram/bots-telegram.comp
 import { CategoriasComponent } from '../categorias/categorias.component';
 import { LoveComponent } from "../cards/love/love.component"; // Atenção aqui!
 import { RouterModule } from '@angular/router';
+import { ModalContatoComponent } from "../modal-contato/modal-contato.component";
+import { ModalIdeiaComponent } from "../modal-ideia/modal-ideia.component";
 
 @Component({
   selector: 'app-home',
@@ -30,13 +32,19 @@ import { RouterModule } from '@angular/router';
     BotsTelegramComponent,
     CategoriasComponent,
     LoveComponent,
+    ModalContatoComponent,
+    ModalIdeiaComponent
 ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
 
+
+export class HomeComponent {
   categoriaAtiva: string = '';
+
+  modalIdeiasAberto: boolean = false;
+  modalContatoAberto: boolean = false;
 
   filtrarCategoria(categoria: string) {
     this.categoriaAtiva = categoria;
@@ -45,4 +53,22 @@ export class HomeComponent {
   verificarCategoria(categoria: string): boolean {
     return this.categoriaAtiva === categoria || this.categoriaAtiva === '';
   }
+
+  abrirModalIdeias() {
+    this.modalIdeiasAberto = true;
+  }
+
+  fecharModalIdeias() {
+    this.modalIdeiasAberto = false;
+  }
+
+  abrirModalContato() {
+    this.modalIdeiasAberto = false;
+    this.modalContatoAberto = true;
+  }
+
+  fecharModalContato() {
+    this.modalContatoAberto = false;
+  }
 }
+

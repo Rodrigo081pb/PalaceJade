@@ -50,9 +50,25 @@
       <app-love></app-love>
     </a>
 
-    <div *ngIf="verificarCategoria('Outros')" class="block">
-      <app-orcamento></app-orcamento>
+    <!-- Categoria "Outros" com botão que abre o modal -->
+    <div *ngIf="verificarCategoria('Outros')" class="block" (click)="abrirModalIdeias()">
+        <app-orcamento></app-orcamento>
     </div>
 
   </div>
+
+  <app-modal-ideia
+    [aberto]="modalIdeiasAberto"
+    [categoria]="'Outros'"
+    [fechar]="fecharModalIdeias.bind(this)"
+    [abrirContato]="abrirModalContato.bind(this)"
+  ></app-modal-ideia>
+
+
+  <!-- Modal de Contato -->
+  <app-modal-contato
+    [aberto]="modalContatoAberto"
+    [fechar]="fecharModalContato.bind(this)"
+  ></app-modal-contato>
+
 </section>

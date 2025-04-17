@@ -1,13 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
-import { LogoComponent } from "../logo/logo.component";
+import { LogoComponent } from '../logo/logo.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-modal-ideia',
   standalone: true,
-  imports: [CommonModule, FormsModule, LogoComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LogoComponent,
+  ],
   templateUrl: './modal-ideia.component.html',
   styleUrls: ['./modal-ideia.component.css'],
   animations: [
@@ -26,10 +30,27 @@ export class ModalIdeiaComponent {
   @Input() aberto: boolean = false;
   @Input() categoria: string = '';
   @Input() fechar!: () => void;
+  @Input() abrirContato!: () => void;
 
   etapa: number = 1;
-  opcoesSelecionadas: string[] = [];
+  nome: string = '';
+  empreendedor: string = '';
   mensagem: string = '';
+  erro: string = '';
+  opcoesSelecionadas: string[] = [];
+
+  enviado: boolean = false;
+
+  opcoes: string[] = [
+    'Agendamento',
+    'Catálogo',
+    'ChatBot',
+    'Formulários',
+    'Automação',
+    'Design',
+    'Social Media',
+    'Outro'
+  ];
 
   toggleOpcao(valor: string) {
     if (this.opcoesSelecionadas.includes(valor)) {
@@ -40,31 +61,40 @@ export class ModalIdeiaComponent {
   }
 
   avancarEtapa() {
+    this.erro = '';
+
+    if (!this.nome.trim() || this.opcoesSelecionadas.length === 0) {
+      this.erro = 'Por favor, preencha todos os campos obrigatórios com informações válidas.';
+      return;
+    }
+
     this.etapa = 2;
   }
 
-  voltarEtapa() {
-    this.etapa = 1;
+  confirmarEnvio() {
+    this.etapa = 3;
+    setTimeout(() => {
+      this.enviado = true;
+    }, 800);
   }
 
-  enviarMensagem(destino: string) {
-    const texto = encodeURIComponent(`Olá! Tenho um projeto na categoria "${this.categoria}" que envolve: ${this.opcoesSelecionadas.join(', ')}. ${this.mensagem ? '\n\nMensagem: ' + this.mensagem : ''}`);
+  irParaContato() {
+    this.resetar();
+    this.abrirContato();
+  }
 
-    switch (destino) {
-      case 'whatsapp':
-        window.open(`https://wa.me/5581984423591?text=${texto}`, '_blank');
-        break;
-      case 'instagram':
-        window.open('https://www.instagram.com/hikarudev/', '_blank');
-        break;
-      case 'email':
-        window.location.href = `mailto:hikarupalacejade@gmail.com?subject=Nova ideia de projeto&body=${texto}`;
-        break;
-    }
+  fecharModalComReset() {
+    this.resetar();
+    setTimeout(() => this.fechar(), 300);
+  }
 
-    this.fechar();
+  resetar() {
     this.etapa = 1;
-    this.opcoesSelecionadas = [];
+    this.nome = '';
+    this.empreendedor = '';
     this.mensagem = '';
+    this.opcoesSelecionadas = [];
+    this.erro = '';
+    this.enviado = false;
   }
 }

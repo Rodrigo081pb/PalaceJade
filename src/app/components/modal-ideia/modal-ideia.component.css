@@ -1,16 +1,16 @@
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.input-modal {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: white;
+  width: 100%;
+  transition: border 0.2s ease;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
+.input-modal:focus {
+  border-color: #a855f7;
+  outline: none;
 }
 
 .btn {
@@ -29,45 +29,46 @@
   transform: scale(1.02);
 }
 
-input[type="checkbox"] {
-  accent-color: #a855f7;
-  width: 1rem;
-  height: 1rem;
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
 
-label {
-  font-size: 0.875rem;
-  color: #e4e4e4;
-  transition: color 0.2s ease;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-label:hover {
-  color: #c084fc;
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border: 4px solid #10b981; /* verde */
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite, pop 0.4s ease-out;
 }
 
-textarea {
-  background-color: #1f1f1f;
-  border: 1px solid #333;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  color: white;
-  resize: none;
-  transition: border 0.2s ease;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-textarea:focus {
-  border-color: #a855f7;
-  outline: none;
-}
-
-app-logo {
-  display: block;
-  margin: 0 auto;
-  transform: scale(1.5);
-}
-
-@media (max-width: 400px) {
-  .grid-cols-2 {
-    grid-template-columns: 1fr !important;
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
   }
 }
