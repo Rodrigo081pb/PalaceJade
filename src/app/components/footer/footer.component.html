@@ -14,10 +14,8 @@
     <div>
       <h4 class="text-white font-semibold mb-2">Links úteis</h4>
       <ul class="space-y-1">
-        <li><a href="#" class="hover:text-purple-400">Termos de uso</a></li>
-        <li><a href="#" class="hover:text-purple-400">Política de privacidade</a></li>
         <li><a href="#" class="hover:text-purple-400">Suporte</a></li>
-        <li><a href="#" class="hover:text-purple-400">Contato</a></li>
+        <li><a (click)="abrirModal();" class="hover:text-purple-400 cursor-pointer">Contato</a></li>
       </ul>
     </div>
 
@@ -65,3 +63,5 @@
     &copy; 2025 Kauã Rodrigo. Todos os direitos reservados.
   </div>
 </footer>
+
+<app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>

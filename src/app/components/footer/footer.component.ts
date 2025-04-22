@@ -1,15 +1,30 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LogoComponent } from '../logo/logo.component';
 import { RouterLink } from '@angular/router';
+import { ModalContatoComponent } from "../modal-contato/modal-contato.component";
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [LogoComponent, RouterLink],
+  imports: [LogoComponent, RouterLink, ModalContatoComponent],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+
+  modalAberto = false;
+
+  abrirModal() {
+    this.modalAberto = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  fecharModal() {
+    this.modalAberto = false;
+    document.body.style.overflow = 'auto';
+  }
+
+
   @ViewChild('emailInput') emailInputRef!: ElementRef<HTMLInputElement>;
 
   enviarEmail(event: Event) {
