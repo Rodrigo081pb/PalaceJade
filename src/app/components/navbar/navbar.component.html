@@ -8,7 +8,6 @@
   <!-- Menu Desktop -->
   <ul class="hidden md:flex gap-6 text-sm md:text-base font-medium text-[#e3c9ee]">
     <li routerLink="/home" class="hover:text-white cursor-pointer transition-colors duration-200">Home</li>
-    <li routerLink="/home" class="hover:text-white cursor-pointer transition-colors duration-200">Marketplace</li>
     <li (click)="scrollTo('footer')" class="hover:text-white cursor-pointer transition-colors duration-200">Sobre</li>
     <li (click)="abrirModal()" class="hover:text-white cursor-pointer transition-colors duration-200">Contato</li>
   </ul>
@@ -31,7 +30,6 @@
     }"
   >
     <a routerLink="/home" (click)="fecharMenu()" class="hover:text-white transition-all">Home</a>
-    <a routerLink="/home#marketplace" (click)="fecharMenu()" class="hover:text-white transition-all">Marketplace</a>
     <a (click)="scrollTo('footer'); fecharMenu()" class="hover:text-white transition-all">Sobre</a>
     <a (click)="abrirModal(); fecharMenu()" class="hover:text-white transition-all">Contato</a>
   </div>
