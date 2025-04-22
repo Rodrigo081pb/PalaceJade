@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WhatsappComponent } from "../cards/whatsapp/whatsapp.component";
-import { SistemaAgendamentoComponent } from "../cards/sistema-agendamento/sistema-agendamento.component";
-import { LandingPagesComponent } from "../cards/landing-pages/landing-pages.component";
-import { DesignComponent } from "../cards/design/design.component";
-import { CardapioFoodsComponent } from "../cards/cardapio-foods/cardapio-foods.component";
-import { OrcamentoComponent } from "../cards/orcamento/orcamento.component";
-import { LinkstreeComponent } from "../cards/linkstree/linkstree.component";
-import { ComercialComponent } from "../comercial/comercial.component";
-import { BotsTelegramComponent } from "../cards/bots-telegram/bots-telegram.component";
-import { CategoriasComponent } from '../categorias/categorias.component';
-import { LoveComponent } from "../cards/love/love.component"; // Atenção aqui!
+import { WhatsappComponent } from "../../components/cards/whatsapp/whatsapp.component";
+import { SistemaAgendamentoComponent } from "../../components/cards/sistema-agendamento/sistema-agendamento.component";
+import { LandingPagesComponent } from "../../components/cards/landing-pages/landing-pages.component";
+import { DesignComponent } from "../../components/cards/design/design.component";
+import { CardapioFoodsComponent } from "../../components/cards/cardapio-foods/cardapio-foods.component";
+import { OrcamentoComponent } from "../../components/cards/orcamento/orcamento.component";
+import { LinkstreeComponent } from "../../components/cards/linkstree/linkstree.component";
+import { ComercialComponent } from "../../components/comercial/comercial.component";
+import { BotsTelegramComponent } from "../../components/cards/bots-telegram/bots-telegram.component";
+import { CategoriasComponent } from '../../components/categorias/categorias.component';
+import { LoveComponent } from "../../components/cards/love/love.component"; // Atenção aqui!
 import { RouterModule } from '@angular/router';
-import { ModalContatoComponent } from "../modal-contato/modal-contato.component";
-import { ModalIdeiaComponent } from "../modal-ideia/modal-ideia.component";
+import { ModalContatoComponent } from "../../components/modal-contato/modal-contato.component";
+import { ModalIdeiaComponent } from "../../components/modal-ideia/modal-ideia.component";
 
 @Component({
   selector: 'app-home',
