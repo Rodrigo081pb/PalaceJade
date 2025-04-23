@@ -2,19 +2,27 @@
 
   <!-- Cabeçalho centralizado -->
   <div class="flex flex-col items-center text-center gap-4 mb-10">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10 h-10 text-purple-500 animate-bounce" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m-14 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+         class="w-10 h-10 text-purple-500 animate-bounce"
+         viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10m-14 8h14a2 2 0 002-2V7a2
+               2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
     </svg>
     <div>
-      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Agendamentos Inteligentes</h1>
-      <p class="text-sm text-[#aaa]">Soluções para transformar seu tempo em oportunidades. Marque, organize e converta com estilo.</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">
+        Agendamentos Inteligentes
+      </h1>
+      <p class="text-sm text-[#aaa]">
+        Soluções para transformar seu tempo em oportunidades.
+      </p>
     </div>
   </div>
 
   <!-- Grid dos cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div *ngFor="let card of cards"
-        class="bg-[#1a1a1a] border border-[#2a2a2a] p-6 rounded-xl hover:border-purple-600 transition flex flex-col justify-between h-full">
+         class="bg-[#1a1a1a] border border-[#2a2a2a] p-6 rounded-xl hover:border-purple-600 transition flex flex-col justify-between">
       <div>
         <div class="flex items-center gap-3 mb-4">
           <i class="{{ card.icone }} text-purple-400 text-xl"></i>
@@ -23,8 +31,13 @@
         <p class="text-sm text-[#ccc] mb-4">{{ card.descricao }}</p>
       </div>
       <div class="flex gap-3 mt-auto">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">
+        <button (click)="abrirModal()"
+                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">
           Solicitar Projeto
+        </button>
+        <button (click)="abrirAgendamento(card)"
+                class="bg-gray-800 hover:bg-purple-600 text-white px-4 py-2 rounded">
+          Explorar Projeto
         </button>
       </div>
     </div>
@@ -36,11 +49,26 @@
         (abrirModal)="abrirModalIdeia()">
       </app-joker-card>
     </div>
-
   </div>
 
-  <!-- Modais -->
-  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
-  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Agendamentos'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+  <!-- Modais de Contato e Ideia -->
+  <app-modal-contato
+    [aberto]="modalContato"
+    [fechar]="fecharModal.bind(this)">
+  </app-modal-contato>
+
+  <app-modal-ideia
+    [aberto]="modalIdeia"
+    [categoria]="'Agendamentos'"
+    [fechar]="fecharModalIdeia.bind(this)">
+  </app-modal-ideia>
+
+  <!-- Modal de Agendamento Inteligente -->
+  <app-agendamento-inteligente
+    *ngIf="agendamentoAberto"
+    [aberto]="agendamentoAberto"
+    [servicoSelecionado]="{ valor: servicoParaAgendar.valor, label: servicoParaAgendar.titulo }"
+    (fechar)="fecharAgendamento()">
+  </app-agendamento-inteligente>
 
 </section>

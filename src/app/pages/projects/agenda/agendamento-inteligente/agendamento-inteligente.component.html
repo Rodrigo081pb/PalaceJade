@@ -1,1 +1,112 @@
-<p>agendamento-inteligente works!</p>
+<div
+  *ngIf="aberto"
+  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+>
+  <div
+    class="bg-[#101010] w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex flex-col"
+  >
+    <!-- Header -->
+    <header class="bg-purple-700 px-6 py-4 flex items-center justify-between">
+      <h2 class="text-white text-lg font-semibold">
+        {{ servicoSelecionado?.label || 'Agendamento' }}
+      </h2>
+      <button (click)="fecharModal()" class="text-white text-2xl leading-none">×</button>
+    </header>
+
+    <!-- Body -->
+    <div class="p-6 flex-1 overflow-y-auto">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="!confirmacao" class="space-y-4">
+        <!-- Serviço (readonly) -->
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Serviço</label>
+          <input
+            type="text"
+            [value]="servicoSelecionado?.label"
+            readonly
+            class="w-full bg-gray-800 text-white px-3 py-2 rounded"
+          />
+        </div>
+        <!-- Nome -->
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Nome</label>
+          <input
+            type="text"
+            name="nome"
+            required
+            [(ngModel)]="dados.nome"
+            class="w-full bg-gray-800 text-white px-3 py-2 rounded"
+          />
+        </div>
+        <!-- Telefone -->
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Telefone</label>
+          <input
+            type="tel"
+            name="telefone"
+            required
+            pattern="\\d{10,11}"
+            placeholder="(99)99999-9999"
+            [(ngModel)]="dados.telefone"
+            class="w-full bg-gray-800 text-white px-3 py-2 rounded"
+          />
+        </div>
+        <!-- Data -->
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Data</label>
+          <input
+            type="date"
+            name="data"
+            required
+            [(ngModel)]="dados.data"
+            class="w-full bg-gray-800 text-white px-3 py-2 rounded"
+          />
+        </div>
+        <!-- Hora -->
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Hora</label>
+          <input
+            type="time"
+            name="hora"
+            required
+            [(ngModel)]="dados.hora"
+            class="w-full bg-gray-800 text-white px-3 py-2 rounded"
+          />
+        </div>
+        <!-- Botão confirmar -->
+        <button
+          type="submit"
+          [disabled]="f.invalid"
+          class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded transition disabled:opacity-50"
+        >
+          Confirmar Agendamento
+        </button>
+      </form>
+
+      <!-- Tela de Confirmação -->
+      <div *ngIf="confirmacao" class="text-center space-y-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-16 h-16 mx-auto text-green-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 13l4 4L19 7" />
+        </svg>
+        <h3 class="text-white text-xl font-semibold">Agendado com sucesso!</h3>
+        <p class="text-gray-300">
+          Nome: {{ dados.nome }}<br />
+          Telefone: {{ dados.telefone }}<br />
+          Data: {{ dados.data }} às {{ dados.hora }}
+        </p>
+        <button
+          (click)="fecharModal()"
+          class="mt-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded transition"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
