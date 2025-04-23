@@ -40,6 +40,15 @@
           >
             Explorar Projeto
           </button>
+
+          <button
+            *ngIf="card.valor==='carrinho'"
+            routerLink="/loja-carrinho"
+            class="bg-gray-800 hover:bg-purple-600 text-white px-4 py-2 rounded"
+          >
+            Explorar Projeto
+          </button>
+
         </div>
       </div>
     </ng-container>
