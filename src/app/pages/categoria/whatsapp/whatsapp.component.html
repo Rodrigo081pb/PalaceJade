@@ -1,11 +1,14 @@
 <section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10">
-  <!-- Cabeçalho com ícone -->
+  <!-- Cabeçalho -->
   <div class="flex flex-col items-center text-center gap-4 mb-10">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-10 h-10 text-green-400 animate-pulse" viewBox="0 0 24 24" stroke="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" class="w-10 h-10 text-green-400 animate-pulse">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-        d="M3 8.25c0-3.45 2.8-6.25 6.25-6.25h5.5c3.45 0 6.25 2.8 6.25 6.25v7.5c0 3.45-2.8 6.25-6.25 6.25h-5.5C5.8 22 3 19.2 3 15.75v-7.5z" />
+            d="M3 8.25c0-3.45 2.8-6.25 6.25-6.25h5.5
+               c3.45 0 6.25 2.8 6.25 6.25v7.5c0 3.45-2.8
+               6.25-6.25 6.25h-5.5C5.8 22 3 19.2 3 15.75v-7.5z" />
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-        d="M8.75 12.25l1.25 1.25L15.25 8" />
+            d="M8.75 12.25l1.25 1.25L15.25 8" />
     </svg>
     <div>
       <h1 class="text-3xl md:text-4xl font-bold text-[#e3c9ee]">Soluções para WhatsApp</h1>
@@ -15,96 +18,31 @@
 
   <!-- Grid de cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-    <!-- Card 1 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-robot text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Bot de Atendimento Inteligente</h2>
+    <ng-container *ngFor="let card of cards">
+      <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas {{card.icon}} text-purple-400 text-xl"></i>
+          <h2 class="text-xl font-semibold text-white">{{card.title}}</h2>
+        </div>
+        <p class="text-sm text-[#ccc] mb-4">{{card.desc}}</p>
+        <div class="flex gap-3">
+          <!-- Solicitar Projeto -->
+          <button (click)="abrirModal()"
+                  class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">
+            Solicitar Projeto
+          </button>
+          <!-- Explorar Projeto -->
+          <button (click)="abrirBotDemo()"
+                  class="bg-gray-800 hover:bg-purple-600 text-white text-sm px-4 py-2 rounded transition">
+            Explorar Projeto
+          </button>
+        </div>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Automatize o WhatsApp da sua empresa com fluxos personalizados, respostas rápidas e integração com seu time.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-store text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Sistema de Pedidos via WhatsApp</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Receba pedidos automáticos com catálogo no WhatsApp. Ideal para deliveries, eventos e lojas.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-calendar-check text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Agendamento com Confirmação</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Seus clientes escolhem um horário, recebem confirmação automática no WhatsApp e você evita no-shows.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-hand-holding-usd text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Pix Automático via WhatsApp</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Geração de cobrança automática com QR Code Pix. Integração perfeita com atendimento ou pedidos.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-images text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">Catálogo Interativo</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Crie menus de produtos com imagens, links e botões que direcionam o cliente direto para o pedido.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-star text-purple-400 text-xl"></i>
-        <h2 class="text-xl font-semibold text-white">SAC com Avaliação</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">
-        Atendimento automático com coleta de feedback via estrelas no final da conversa. Ótimo para medir a satisfação.
-      </p>
-      <div class="flex gap-3">
-        <button (click)="abrirModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded">Solicitar Projeto</button>
-      </div>
-    </div>
+    </ng-container>
   </div>
 
-  <app-joker-card
-    [categoria]="'WhatsApp'"
-    (abrirModal)="abrirModalIdeia()">
-  </app-joker-card>
+  <!-- Modais extras -->
+  <app-joker-card [categoria]="'WhatsApp'" (abrirModal)="abrirModalIdeia()"></app-joker-card>
 
   <app-modal-ideia
     [aberto]="modalIdeiaAberto"
@@ -112,11 +50,16 @@
     [fechar]="fecharModalIdeia.bind(this)">
   </app-modal-ideia>
 
-  <!-- Modal com animação -->
   <app-modal-contato
-  [aberto]="modalAberto"
-  [fechar]="fecharModal.bind(this)">
+    [aberto]="modalAberto"
+    [fechar]="fecharModal.bind(this)">
   </app-modal-contato>
 
+  <!-- Bot Interativo -->
+  <app-bot-atendimento
+    *ngIf="botAberto"
+    [aberto]="botAberto"
+    (fechar)="fecharBotDemo()"
+    (abrirContato)="onAbrirContatoFromBot()">
+  </app-bot-atendimento>
 </section>
-

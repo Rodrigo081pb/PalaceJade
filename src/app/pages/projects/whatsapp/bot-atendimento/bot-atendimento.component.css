@@ -1,0 +1,25 @@
+/* Fade-in */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Scrollbar fina e roxa */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 3px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #9333ea;
+  border-radius: 3px;
+}
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #9333ea #2d2d2d;
+}

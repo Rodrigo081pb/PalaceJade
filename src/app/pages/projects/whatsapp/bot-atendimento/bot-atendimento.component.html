@@ -1,1 +1,76 @@
-<p>bot-atendimento works!</p>
+<div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+  <div class="bg-[#101010] w-full max-w-md h-[80vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden">
+
+    <!-- Header fixo -->
+    <header class="bg-[#1e1e1e] px-4 py-3 flex items-center justify-between sticky top-0 z-20">
+      <div class="flex items-center gap-2">
+        <img
+          src="https://avatars.githubusercontent.com/u/139706381?s=200&v=4"
+          class="w-8 h-8 rounded-full border border-purple-600"
+        />
+        <div>
+          <p class="text-sm text-white font-semibold">Hikaruz</p>
+          <p class="text-xs text-green-400">online</p>
+        </div>
+      </div>
+      <button (click)="fecharBot()" class="text-white hover:text-purple-400 text-xl">×</button>
+    </header>
+
+    <!-- Corpo do chat rolável -->
+    <div
+      #chatContainer
+      class="flex-1 overflow-y-auto px-4 py-2 space-y-3 bg-gray-800 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-gray-700"
+    >
+      <ng-container *ngFor="let msg of mensagens">
+        <div class="flex" [ngClass]="msg.user === 'user' ? 'justify-end' : 'justify-start'">
+          <div class="relative max-w-[75%] animate-fade-in">
+            <div
+              class="p-3 text-sm shadow-lg"
+              [ngClass]="
+                msg.user === 'user'
+                  ? 'bg-purple-600 text-white rounded-tr-2xl rounded-bl-2xl rounded-tl-xl'
+                  : 'bg-[#2a2a2a] text-gray-200 rounded-tl-2xl rounded-br-2xl rounded-tr-xl'
+              "
+            >
+              {{ msg.text }}
+            </div>
+            <span class="absolute bottom-0 right-0 text-[10px] opacity-50 mr-1 mb-0.5">
+              {{ msg.timestamp }}
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="msg.quickReplies" class="flex flex-wrap gap-2 px-2">
+          <button
+            *ngFor="let qr of msg.quickReplies"
+            (click)="onQuickReply(qr)"
+            class="flex items-center gap-1 bg-purple-600 hover:bg-purple-700 text-white text-xs px-3 py-1 rounded-full transition"
+          >
+            <i *ngIf="qr.icon" class="fas {{ qr.icon }} text-[10px]"></i>
+            {{ qr.label }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Input fixo -->
+    <footer class="bg-[#1a1a1a] px-3 py-2 border-t border-[#333] sticky bottom-0 z-10 flex items-center gap-3">
+      <input
+        [(ngModel)]="mensagemAtual"
+        (keyup.enter)="enviarMensagem()"
+        placeholder="Digite sua mensagem..."
+        class="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-sm"
+      />
+      <button (click)="enviarMensagem()" class="text-purple-400 hover:text-purple-200 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            d="M2.003 5.884L10 10.882l7.997-4.998A1 1 0 0017.12
+               4l-16 10a1 1 0 00.88 1.765L10 11.118l7.997
+               4.998a1 1 0 001.121-1.765l-16-10a1 1
+               0 00-.88 1.765z"
+          />
+        </svg>
+      </button>
+    </footer>
+  </div>
+</div>
