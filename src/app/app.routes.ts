@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { LojaCatalogoComponent } from './pages/projects/site-vendas/loja-catalogo/loja-catalogo.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,4 +47,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/categoria/love/love.component').then(m => m.LoveComponent)
   },
+
+  // páginas dos projetos da categoria de lojas virtuais.
+
+  {
+    path:'loja-catalogo', component: LojaCatalogoComponent
+  }
+
 ];
