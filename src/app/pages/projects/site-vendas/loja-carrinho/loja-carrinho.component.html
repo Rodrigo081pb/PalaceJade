@@ -1,129 +1,42 @@
-<section class="bg-gradient-to-b from-[#0a0a0a] to-[#151515] min-h-screen py-10 px-4">
-  <!-- Top bar -->
-  <div class="flex justify-between items-center max-w-7xl mx-auto mb-8">
-    <a routerLink="/categoria/lojas"
-       class="flex items-center text-purple-400 hover:text-purple-200 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15 19l-7-7 7-7" />
-      </svg>
-      Voltar
-    </a>
-
-    <button (click)="abrirCarrinho()"
-            class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full shadow-lg transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.2 6M17 13l1.2 6M6 19a1 1 0 100 2 1 1 0 000-2zm12 0a1 1 0 100 2 1 1 0 000-2z" />
-      </svg>
-      <span>Seu Carrinho ({{ itensCarrinho.length }})</span>
-    </button>
+<!-- src/app/pages/loja-carrinho/loja-carrinho.component.html -->
+<section class="bg-[#0e0e0e] text-white min-h-screen p-6 flex flex-col">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Seu Carrinho</h1>
+    <a
+      routerLink="/checkout"
+      class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+    >Ir para Checkout</a>
   </div>
 
-  <!-- Grid de produtos -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 md:px-0">
-    <ng-container *ngFor="let p of produtos; trackBy: trackById">
-      <div class="group bg-[#1f1f1f] rounded-2xl overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl flex flex-col">
-        <!-- imagem com degradê -->
-        <div class="relative h-90 overflow-hidden">
-          <img [src]="p.imagem" [alt]="p.nome"
-               class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+  <ng-container *ngIf="cart.getItems().length; else empty">
+    <div class="space-y-4 flex-1 overflow-y-auto">
+      <div
+        *ngFor="let it of cart.getItems()"
+        class="flex items-center bg-[#1a1a1a] p-4 rounded-xl shadow"
+      >
+        <img [src]="it.image" alt="{{ it.name }}" class="w-16 h-16 object-cover rounded mr-4"/>
+        <div class="flex-1">
+          <h2 class="font-semibold">{{ it.name }}</h2>
+          <p class="text-sm text-gray-400">R$ {{ it.price.toFixed(2) }}</p>
         </div>
-
-        <!-- conteúdo -->
-        <div class="p-6 flex-1 flex flex-col">
-          <h3 class="text-xl font-bold text-white mb-2">{{ p.nome }}</h3>
-          <p class="text-gray-400 text-sm flex-1">{{ p.descricao }}</p>
-
-          <!-- preço + botão -->
-          <div class="mt-4 flex items-center justify-between">
-            <span class="text-purple-500 font-extrabold text-lg">
-              R$ {{ p.preco.toFixed(2) }}
-            </span>
-            <button (click)="adicionar(p)"
-                    class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-md transition">
-              Adicionar ao Carrinho
-            </button>
-          </div>
+        <div class="flex items-center gap-2 px-4">
+          <button (click)="decrement(it)" class="w-8 h-8 bg-gray-700 rounded">−</button>
+          <span>{{ it.qty }}</span>
+          <button (click)="increment(it)" class="w-8 h-8 bg-gray-700 rounded">+</button>
         </div>
-      </div>
-    </ng-container>
-  </div>
-
-  <!-- Modal Carrinho -->
-  <div *ngIf="modalAberto"
-       class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-    <div class="bg-[#101010] w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden">
-      <!-- Header -->
-      <header class="bg-[#1e1e1e] px-6 py-4 flex items-center justify-between sticky top-0 z-20">
-        <h2 class="text-2xl font-semibold text-white">🛒 Seu Carrinho</h2>
-        <button (click)="fecharCarrinho()"
-                class="text-white text-3xl hover:text-red-500 transition">×</button>
-      </header>
-
-      <!-- Itens roláveis -->
-      <div class="max-h-96 overflow-y-auto p-6 space-y-6">
-        <ng-container *ngIf="itensCarrinho.length; else vazio">
-          <div *ngFor="let item of itensCarrinho; trackBy: trackByItem"
-               class="flex items-center gap-4">
-            <img [src]="item.produto.imagem"
-                 [alt]="item.produto.nome"
-                 class="w-16 h-16 object-cover rounded-lg border border-gray-700" />
-
-            <div class="flex-1 space-y-1">
-              <p class="text-white font-medium">{{ item.produto.nome }}</p>
-              <div class="flex items-center gap-2">
-                <button (click)="decrementar(item.produto.id)"
-                        class="w-6 h-6 bg-gray-700 text-white rounded-full flex items-center justify-center hover:bg-gray-600 transition">−</button>
-                <span class="text-white">{{ item.quantidade }}</span>
-                <button (click)="incrementar(item.produto.id)"
-                        class="w-6 h-6 bg-gray-700 text-white rounded-full flex items-center justify-center hover:bg-gray-600 transition">+</button>
-              </div>
-            </div>
-
-            <button (click)="remover(item.produto.id)"
-                    class="text-red-500 text-2xl hover:text-red-600 transition">×</button>
-          </div>
-        </ng-container>
-        <ng-template #vazio>
-          <p class="text-center text-gray-500">Seu carrinho está vazio.</p>
-        </ng-template>
-      </div>
-
-      <!-- Rodapé -->
-      <footer class="bg-[#1a1a1a] px-6 py-4 border-t border-gray-800 sticky bottom-0 z-20 flex items-center justify-between">
-        <div class="space-x-2">
-          <span class="text-white font-semibold">Total:</span>
-          <span class="text-green-400 font-bold text-lg">
-            R$ {{ getTotal().toFixed(2) }}
-          </span>
-        </div>
-        <button (click)="abrirCheckout()"
-                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full shadow transition">
-          Finalizar com Pix
-        </button>
-      </footer>
-
-      <!-- Checkout overlay -->
-      <div *ngIf="checkoutAberto"
-           class="absolute inset-0 bg-black/90 flex items-center justify-center p-4 z-40">
-        <div class="bg-[#1a1a1a] p-6 rounded-2xl w-full max-w-sm text-center space-y-4 shadow-lg">
-          <h3 class="text-2xl font-semibold text-white">Pagamento via Pix</h3>
-          <p class="text-green-400 font-bold text-xl">
-            R$ {{ getTotal().toFixed(2) }}
-          </p>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PIX_EXEMPLO"
-               alt="QR Code Pix"
-               class="mx-auto rounded-lg border border-gray-700" />
-          <button (click)="fecharCheckout()"
-                  class="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-full shadow transition">
-            Fechar
-          </button>
+        <div class="w-24 text-right font-semibold">
+          R$ {{ (it.price * it.qty).toFixed(2) }}
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- total -->
+    <div class="mt-6 text-right text-xl font-bold">
+      Total: R$ {{ cart.getTotal().toFixed(2) }}
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <p class="text-gray-500 text-center mt-20">Seu carrinho está vazio.</p>
+  </ng-template>
 </section>

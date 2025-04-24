@@ -1,1 +1,112 @@
-<p>checkout works!</p>
+<!-- checkout.component.html -->
+<div class="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-4">
+  <div class="bg-[#1a1a1a] w-full max-w-md rounded-2xl shadow-xl overflow-hidden animate-fade-in max-h-[80vh] flex flex-col">
+    <!-- HEADER -->
+    <div class="bg-[#2a2a2a] flex justify-between items-center px-8 py-5">
+      <h3 class="text-white text-base font-semibold">Checkout</h3>
+      <button (click)="doClose()" class="text-white text-xl leading-none">X</button>
+    </div>
+
+    <!-- CARROSSEL DE ITENS -->
+    <div class="overflow-x-auto flex gap-3 px-3 py-2 bg-[#101010] scrollbar-thin scrollbar-thumb-purple-600">
+      <ng-container *ngFor="let item of cart.getItems()">
+        <div class="min-w-[80px] text-center">
+          <img [src]="item.image" class="w-full h-16 object-cover rounded-lg mb-1" />
+          <p class="text-white text-xs">{{ item.name }}</p>
+          <p class="text-purple-400 font-semibold text-sm">R$ {{ (item.price * item.qty).toFixed(2) }}</p>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- CONFIRMAÇÃO -->
+    <div *ngIf="showConfirmation" class="p-4 space-y-3 text-center">
+      <p class="text-green-400 text-lg">✅ Pagamento Recebido!</p>
+      <p class="text-gray-300 text-sm">Código de rastreio:</p>
+      <p class="font-mono text-white">{{ trackingCode }}</p>
+      <button (click)="doClose()" class="mt-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-1 rounded text-sm">Fechar</button>
+      <hr class="border-gray-700" />
+      <p class="text-gray-400 text-xs">Em breve enviaremos tudo no seu e-mail.</p>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form *ngIf="!showConfirmation" (ngSubmit)="confirm()" class="px-3 py-4 space-y-3 text-sm overflow-y-auto">
+
+      <!-- Nome / Sobrenome -->
+      <div class="grid grid-cols-2 gap-2">
+        <input [(ngModel)]="firstName" name="firstName" required placeholder="Nome" class="bg-[#2a2a2a] text-white p-2 rounded text-xs w-full" />
+        <input [(ngModel)]="lastName"  name="lastName" required placeholder="Sobrenome" class="bg-[#2a2a2a] text-white p-2 rounded text-xs w-full" />
+      </div>
+
+      <input [(ngModel)]="email" name="email" type="email" required placeholder="E-mail" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs" />
+
+      <input [(ngModel)]="cep" name="cep" required placeholder="CEP" (blur)="onCepBlur()" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs" />
+
+      <!-- Endereço preenchido -->
+      <p *ngIf="endereco.address" class="text-gray-400 text-[11px]">
+        {{ endereco.address_name || endereco.address }}, {{ endereco.district }} – {{ endereco.city }}/{{ endereco.state }}
+      </p>
+
+      <!-- Cupom -->
+      <div class="flex gap-2">
+        <input [(ngModel)]="coupon" name="coupon" class="flex-1 bg-[#2a2a2a] text-white p-2 rounded text-xs" placeholder="Cupom" />
+        <button type="button" (click)="applyCoupon()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1 rounded text-xs">Aplicar</button>
+      </div>
+
+      <!-- Método de Pagamento -->
+      <select [(ngModel)]="paymentMethod" name="paymentMethod" (change)="onMethodChange()" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs">
+        <option disabled value="">Selecione o método de pagamento</option>
+        <option value="pix">Pix</option>
+        <option value="card">Cartão</option>
+      </select>
+
+      <!-- QR Code Pix -->
+      <div *ngIf="paymentMethod==='pix'" class="text-center">
+        <p class="text-gray-300 text-xs">Aponte a câmera ou use o código abaixo</p>
+        <img [src]="qrUrl" alt="QR Code Pix" class="mx-auto w-32 h-32" *ngIf="qrUrl"/>
+      </div>
+
+      <!-- Cartão -->
+      <div *ngIf="paymentMethod==='card'">
+        <input name="nomeTitular" [(ngModel)]="cardName" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs mb-1" placeholder="Nome do Titular" />
+        <input name="numeroCartao" [(ngModel)]="cardNumber" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs mb-1" placeholder="Número do Cartão" />
+
+        <select [(ngModel)]="bandeira" name="bandeira" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs mb-1">
+          <option disabled value="">Bandeira</option>
+          <option *ngFor="let b of ['Visa','MasterCard','Elo','Hipercard']" [value]="b">{{ b }}</option>
+        </select>
+
+        <select [(ngModel)]="formaCartao" name="formaCartao" class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs mb-1">
+          <option value="credito">Crédito</option>
+          <option value="debito">Débito</option>
+        </select>
+
+        <!-- Parcelas -->
+        <select [(ngModel)]="installments" name="installments"
+                class="w-full bg-[#2a2a2a] text-white p-2 rounded text-xs mb-1">
+          <option disabled value="">Parcelas</option>
+          <option *ngFor="let n of installmentsOptions" [value]="n">
+            {{ n }}x R$ {{ (totalFinalNumber() / n) | number:'1.2-2' }}
+          </option>
+        </select>
+      </div>
+
+
+      <!-- Totais -->
+      <div class="text-right text-white text-xs">
+        <p>Subtotal: R$ {{ cart.getTotal().toFixed(2) }}</p>
+        <p>Frete: R$ {{ shippingCost.toFixed(2) }}</p>
+        <p *ngIf="discount">Desconto: R$ {{ discount.toFixed(2) }}</p>
+        <p class="font-bold text-sm">Total: R$ {{ totalFinal() }}</p>
+      </div>
+
+      <!-- Ações -->
+      <div class="flex justify-end gap-2 mt-3">
+        <button type="button" (click)="doClose()" class="bg-gray-600 px-3 py-1 rounded text-white text-xs">Cancelar</button>
+        <button type="submit" class="bg-green-600 px-4 py-1 rounded text-white text-xs">Confirmar</button>
+      </div>
+    </form>
+
+    <!-- Modal de Contato -->
+    <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
+  </div>
+</div>

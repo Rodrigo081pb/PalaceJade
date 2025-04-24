@@ -1,0 +1,16 @@
+/* Estilo geral da barra de rolagem no modal de checkout */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #a855f7;
+  border-radius: 10px;
+  box-shadow: 0 0 6px #a855f7, 0 0 10px #9333ea;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea;
+  box-shadow: 0 0 8px #a855f7, 0 0 12px #a855f7;
+}
