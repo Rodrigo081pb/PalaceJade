@@ -62,6 +62,7 @@
       <!-- QR Code Pix -->
       <div *ngIf="paymentMethod==='pix'" class="text-center">
         <p class="text-gray-300 text-xs">Aponte a câmera ou use o código abaixo</p>
+        <br>
         <img [src]="qrUrl" alt="QR Code Pix" class="mx-auto w-32 h-32" *ngIf="qrUrl"/>
       </div>
 
