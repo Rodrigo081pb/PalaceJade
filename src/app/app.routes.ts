@@ -8,6 +8,7 @@ import { CheckoutComponent } from './pages/projects/site-vendas/checkout/checkou
 import { LojaInfoprodutoComponent } from './pages/projects/site-vendas/loja-infoproduto/loja-infoproduto.component';
 import { Component } from '@angular/core';
 import { LandingPageComponent } from './pages/projects/site-vendas/landing-page/landing-page.component';
+import { RestauranteCompletoComponent } from './pages/projects/cardapio/restaurante-completo/restaurante-completo.component';
 
 export const routes: Routes = [
   // rota inicial e home
@@ -70,6 +71,8 @@ export const routes: Routes = [
   { path: 'checkout',      component: CheckoutComponent },
   { path: 'loja-infoprodutos', component: LojaInfoprodutoComponent },
   { path: 'landing-page', component: LandingPageComponent},
+
+  { path: 'restaurante-completo', component: RestauranteCompletoComponent},
 
   // rota curinga: redireciona para a home
   { path: '**', redirectTo: '' }
