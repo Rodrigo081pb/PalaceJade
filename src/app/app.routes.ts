@@ -6,6 +6,8 @@ import { LojaCatalogoComponent } from './pages/projects/site-vendas/loja-catalog
 import { LojaCarrinhoComponent } from './pages/projects/site-vendas/loja-carrinho/loja-carrinho.component';
 import { CheckoutComponent } from './pages/projects/site-vendas/checkout/checkout.component';
 import { LojaInfoprodutoComponent } from './pages/projects/site-vendas/loja-infoproduto/loja-infoproduto.component';
+import { Component } from '@angular/core';
+import { LandingPageComponent } from './pages/projects/site-vendas/landing-page/landing-page.component';
 
 export const routes: Routes = [
   // rota inicial e home
@@ -67,6 +69,7 @@ export const routes: Routes = [
   { path: 'loja-carrinho', component: LojaCarrinhoComponent },
   { path: 'checkout',      component: CheckoutComponent },
   { path: 'loja-infoprodutos', component: LojaInfoprodutoComponent },
+  { path: 'landing-page', component: LandingPageComponent},
 
   // rota curinga: redireciona para a home
   { path: '**', redirectTo: '' }

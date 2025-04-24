@@ -38,18 +38,6 @@ export class LojasVirtuaisComponent {
       route:    '/loja-catalogo'
     },
     {
-      icone:    'fas fa-shopping-cart',
-      titulo:   'Carrinho + Pagamento Pix',
-      descricao:'E-commerce simples com carrinho e checkout via Pix.',
-      route:    '/loja-carrinho'
-    },
-    {
-      icone:    'fas fa-cube',
-      titulo:   'Produto Único c/ Checkout',
-      descricao:'Página focada num produto e checkout rápido.',
-      route:    '/checkout'
-    },
-    {
       icone:    'fas fa-book-open',
       titulo:   'Loja de Infoprodutos',
       descricao:'Venda cursos, ebooks e templates digitais.',
@@ -57,9 +45,9 @@ export class LojasVirtuaisComponent {
     },
     {
       icone:    'fas fa-user-plus',
-      titulo:   'Landing Page p/ Leads',
+      titulo:   'Landing Page',
       descricao:'Captura e gestão de leads com formulário.',
-      // sem explorar
+      route: '/landing-page'
     }
   ];
 
