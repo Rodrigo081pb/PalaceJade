@@ -1,4 +1,3 @@
-// src/app/pages/linktree/linktree.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalContatoComponent } from '../../../components/modal-contato/modal-contato.component';
@@ -18,16 +17,57 @@ export class LinktreeComponent {
   modalPreviewAberto = false;
   selectedBusiness = '';
   selectedColor = '';
+  selectedServico = '';
 
   negocios = [
-    { nome: 'Salão de Beleza', icone: 'fas fa-scissors', descricao: 'Agenda online, Instagram, localização e botão de contato direto.', cor: 'from-pink-500 to-purple-500' },
-    { nome: 'Barbearia', icone: 'fas fa-briefcase', descricao: 'Agendamento, cortes em destaque, avaliações e redes sociais.', cor: 'from-gray-700 to-gray-500' },
-    { nome: 'Estúdio de Tatuagem', icone: 'fas fa-pen-nib', descricao: 'Portfólio, Instagram, orçamento e formulário de agendamento.', cor: 'from-red-500 to-pink-500' },
-    { nome: 'Restaurante / Lanchonete', icone: 'fas fa-hamburger', descricao: 'Cardápio interativo, WhatsApp para pedidos e localização.', cor: 'from-yellow-500 to-red-400' },
-    { nome: 'Loja de Roupas', icone: 'fas fa-tshirt', descricao: 'Coleções, botão de pedido e Instagram da loja.', cor: 'from-indigo-500 to-purple-400' },
-    { nome: 'Criador de Conteúdo', icone: 'fas fa-video', descricao: 'Links para vídeos, cursos e redes sociais.', cor: 'from-blue-500 to-teal-400' },
-    { nome: 'Profissional da Saúde', icone: 'fas fa-brain', descricao: 'Agendamento, redes sociais e formulário de pré-atendimento.', cor: 'from-green-400 to-blue-400' },
-    { nome: 'Artista / Músico', icone: 'fas fa-guitar', descricao: 'Spotify, agenda de shows, portfólio, contato para eventos.', cor: 'from-yellow-400 to-orange-500' }
+    {
+      nome: 'Salão de Beleza',
+      descricao: 'Agenda online, Instagram, localização e botão de contato direto.',
+      icone: 'fas fa-scissors',
+      cor: 'from-pink-500 to-pink-300'
+    },
+    {
+      nome: 'Barbearia',
+      descricao: 'Agendamento, cortes em destaque, avaliações e redes sociais.',
+      icone: 'fas fa-briefcase',
+      cor: 'from-gray-700 to-gray-500'
+    },
+    {
+      nome: 'Estúdio de Tatuagem',
+      descricao: 'Portfólio, Insta, orçamento e agendamento fácil.',
+      icone: 'fas fa-pen-nib',
+      cor: 'from-indigo-600 to-purple-500'
+    },
+    {
+      nome: 'Restaurante / Lanchonete',
+      descricao: 'Cardápio interativo, WhatsApp e localização.',
+      icone: 'fas fa-hamburger',
+      cor: 'from-yellow-500 to-red-500'
+    },
+    {
+      nome: 'Loja de Roupas',
+      descricao: 'Coleções, pedido direto e vitrine digital.',
+      icone: 'fas fa-tshirt',
+      cor: 'from-blue-500 to-purple-400'
+    },
+    {
+      nome: 'Criador de Conteúdo',
+      descricao: 'Vídeos, cursos, redes e comunidade.',
+      icone: 'fas fa-video',
+      cor: 'from-red-600 to-orange-500'
+    },
+    {
+      nome: 'Profissional da Saúde',
+      descricao: 'Agendamento, redes sociais e formulário.',
+      icone: 'fas fa-brain',
+      cor: 'from-green-500 to-teal-400'
+    },
+    {
+      nome: 'Artista / Músico',
+      descricao: 'Spotify, agenda de shows e portfólio.',
+      icone: 'fas fa-guitar',
+      cor: 'from-yellow-300 to-purple-500'
+    }
   ];
 
   abrirModal() {
@@ -35,14 +75,14 @@ export class LinktreeComponent {
     document.body.style.overflow = 'hidden';
   }
 
-  fecharModal() {
-    this.modalAberto = false;
-    document.body.style.overflow = 'auto';
-  }
-
   abrirModalIdeia() {
     this.modalIdeiaAberto = true;
     document.body.style.overflow = 'hidden';
+  }
+
+  fecharModal() {
+    this.modalAberto = false;
+    document.body.style.overflow = 'auto';
   }
 
   fecharModalIdeia() {
@@ -56,12 +96,10 @@ export class LinktreeComponent {
       this.selectedBusiness = negocio.nome;
       this.selectedColor = negocio.cor;
       this.modalPreviewAberto = true;
-      document.body.style.overflow = 'hidden';
     }
   }
 
   fecharPreview() {
     this.modalPreviewAberto = false;
-    document.body.style.overflow = 'auto';
   }
 }

@@ -1,5 +1,5 @@
 <!-- linktree.component.html -->
-<section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 animate-fade-in">
+<section class="bg-[#0e0e0e] text-white min-h-screen px-4 md:px-6 py-10 animate-fade-in">
 
   <!-- Cabeçalho -->
   <div class="flex flex-col items-center text-center gap-4 mb-10">
@@ -9,22 +9,25 @@
   </div>
 
   <!-- Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <ng-container *ngFor="let item of negocios">
-      <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-purple-600 transition">
-        <div class="flex items-center gap-3 mb-4">
-          <i [class]="item.icone + ' text-purple-400 text-xl'"></i>
-          <h2 class="text-xl font-semibold text-white">{{ item.nome }}</h2>
+      <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-5 sm:p-6 hover:border-purple-600 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <i [class]="item.icone + ' text-purple-400 text-xl'"></i>
+            <h2 class="text-xl font-semibold text-white">{{ item.nome }}</h2>
+          </div>
+          <p class="text-sm text-[#ccc] mb-4">{{ item.descricao }}</p>
         </div>
-        <p class="text-sm text-[#ccc] mb-4">{{ item.descricao }}</p>
-        <div class="flex gap-3">
-          <button (click)="abrirPreview(item.nome)" class="btn">Explorar Projeto</button>
+        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+          <button (click)="abrirModal()" class="btn-solicitar w-full">Solicitar Projeto</button>
+          <button (click)="abrirPreview(item.nome)" class="btn w-full">Explorar Projeto</button>
         </div>
       </div>
     </ng-container>
 
     <!-- Card Coringa -->
-    <div class="md:col-span-2">
+    <div class="sm:col-span-2 lg:col-span-3">
       <app-joker-card [categoria]="'Linktree'" (abrirModal)="abrirModalIdeia()"></app-joker-card>
     </div>
   </div>
@@ -49,5 +52,4 @@
   <!-- Modais de Contato e Ideia -->
   <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
   <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Linktree'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
-
 </section>
