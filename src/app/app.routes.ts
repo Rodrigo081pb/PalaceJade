@@ -9,6 +9,8 @@ import { LojaInfoprodutoComponent } from './pages/projects/site-vendas/loja-info
 import { Component } from '@angular/core';
 import { LandingPageComponent } from './pages/projects/site-vendas/landing-page/landing-page.component';
 import { RestauranteCompletoComponent } from './pages/projects/cardapio/restaurante-completo/restaurante-completo.component';
+import { PedidoComponent } from './pages/projects/love/pedido/pedido.component';
+import { PolaroidMusicComponent } from './pages/projects/love/polaroid/polaroid.component';
 
 export const routes: Routes = [
   // rota inicial e home
@@ -72,8 +74,12 @@ export const routes: Routes = [
   { path: 'loja-infoprodutos', component: LojaInfoprodutoComponent },
   { path: 'landing-page', component: LandingPageComponent},
 
+  // Cardapio
   { path: 'restaurante-completo', component: RestauranteCompletoComponent},
 
+  // Love
+  { path: 'pedido', component: PedidoComponent},
+  { path: 'polaroid', component: PolaroidMusicComponent},
   // rota curinga: redireciona para a home
   { path: '**', redirectTo: '' }
 ];

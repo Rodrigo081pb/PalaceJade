@@ -1,1 +1,91 @@
-<p>polaroid works!</p>
+<!-- polaroid-music.component.html -->
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-pink-600 to-red-500 p-6">
+
+  <div class="relative w-full max-w-md">
+    <!-- Cartão Polaroid -->
+    <div
+      class="relative bg-white rounded-lg shadow-2xl p-4 pb-8 mb-6 transition-transform duration-500"
+      [ngClass]="{
+        'rotate-2': currentIndex % 2 === 0,
+        '-rotate-2': currentIndex % 2 !== 0
+      }"
+    >
+      <img
+        [src]="tracks[currentIndex].url"
+        alt="Capa da música"
+        class="w-full h-64 object-cover rounded-md transition-transform duration-500 hover:scale-105"
+      />
+      <div class="absolute bottom-0 left-0 w-full h-4 bg-white border-t-4 border-gray-300"></div>
+    </div>
+
+    <!-- Indicadores de Slide -->
+    <div class="flex justify-center mb-4 space-x-2">
+      <button
+        *ngFor="let _ of tracks; let i = index"
+        (click)="goTo(i)"
+        class="w-3 h-3 rounded-full transform transition-transform duration-200"
+        [ngClass]="{
+          'bg-white scale-125': i === currentIndex,
+          'bg-white/50 scale-100': i !== currentIndex
+        }"
+        [attr.aria-label]="'Ir para slide ' + (i + 1)"
+      ></button>
+    </div>
+
+    <!-- Informações da Faixa -->
+    <div class="text-center mb-4">
+      <h2 class="text-xl font-bold text-white drop-shadow">
+        {{ tracks[currentIndex].title }}
+      </h2>
+      <p class="text-sm text-white/80 italic">
+        {{ tracks[currentIndex].artist }}
+      </p>
+    </div>
+
+    <!-- Barra de Progresso -->
+    <div class="flex items-center text-xs text-white/80 mb-4">
+      <span>{{ formatTime(currentTime) }}</span>
+      <input
+        type="range"
+        class="mx-2 flex-1 accent-pink-400"
+        [max]="duration"
+        [value]="currentTime"
+        (input)="onSeek($event)"
+        [attr.aria-label]="'Barra de progresso'"
+      />
+      <span>{{ formatTime(duration) }}</span>
+    </div>
+
+    <!-- Controles de Áudio -->
+    <div class="flex items-center justify-center gap-6 text-white text-2xl">
+      <button
+        (click)="toggleShuffle()"
+        [attr.aria-label]="'Alternar embaralhar'"
+      >
+        <i class="fas fa-random" [class.text-pink-400]="shuffle"></i>
+      </button>
+      <button (click)="prev()" aria-label="Música anterior">
+        <i class="fas fa-step-backward"></i>
+      </button>
+      <button
+        (click)="togglePlay()"
+        class="w-14 h-14 flex items-center justify-center bg-white text-pink-600 rounded-full shadow-lg hover:scale-110 transition-transform"
+        aria-label="Play / Pause"
+      >
+        <i [class]="playing ? 'fas fa-pause' : 'fas fa-play'"></i>
+      </button>
+      <button (click)="next()" aria-label="Próxima música">
+        <i class="fas fa-step-forward"></i>
+      </button>
+      <button
+        (click)="toggleRepeat()"
+        [attr.aria-label]="'Alternar repetir'"
+      >
+        <i class="fas fa-redo" [class.text-pink-400]="repeat"></i>
+      </button>
+    </div>
+
+    <!-- Player HTML5 oculto -->
+    <audio #audioPlayer></audio>
+  </div>
+</div>

@@ -1,1 +1,56 @@
-<p>pedido works!</p>
+
+<section
+  class="bg-gradient-to-b from-pink-500 to-red-500 min-h-screen flex flex-col items-center justify-center text-white p-6 relative overflow-hidden"
+>
+
+  <button
+    class="absolute top-4 left-4 px-4 py-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition"
+    (click)="voltar()"
+    >
+    ← Voltar
+  </button>
+
+
+  <!-- Fogos de artifício animados -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="firework"
+      *ngFor="let f of fireworks"
+      [ngStyle]="{ 'left.%': f.x, 'top.%': f.y }"
+    ></div>
+  </div>
+
+  <h1 class="text-5xl font-extrabold mb-4 animate-pulse">Pedido de Namoro</h1>
+  <p class="text-lg mb-6 text-center max-w-md">
+    Eu atravessei mares de código e línguas de HTML só para perguntar: Quer
+    namorar comigo?
+  </p>
+
+  <!-- Só exibe enquanto não houve resposta -->
+  <div *ngIf="resposta === null" class="flex gap-4 mb-6">
+    <!-- Botão “Sim” -->
+    <button
+      (click)="responder('sim')"
+      class="px-6 py-3 bg-white text-pink-600 font-semibold rounded-full shadow-md hover:shadow-lg transition-shadow"
+    >
+      Claro que Sim! 💖
+    </button>
+
+    <!-- Botão “Não” -->
+    <button
+      (click)="responder('nao')"
+      class="px-6 py-3 border-2 border-white text-white font-semibold rounded-full shadow-md hover:bg-white hover:text-pink-600 transition-colors"
+    >
+      Ainda não estou pronto
+    </button>
+  </div>
+
+  <!-- Mensagens pós-resposta -->
+  <div *ngIf="resposta === 'sim'" class="mt-8 text-center animate-fade-in">
+    <h2 class="text-2xl font-bold">💍 Eu sabia que você diria sim!</h2>
+    <p>Agora começa nossa história de verdade...</p>
+  </div>
+  <div *ngIf="resposta === 'nao'" class="mt-8 text-center animate-fade-in">
+    <h2 class="text-2xl font-semibold">Tudo bem, paciência é amor também 😊</h2>
+  </div>
+</section>

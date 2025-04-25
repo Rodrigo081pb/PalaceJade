@@ -16,11 +16,12 @@
 .btn {
   background-color: #ec4899;
   color: white;
-  font-size: 0.875rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease-in-out;
-  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-align: center;
 }
 
 .btn:hover {
@@ -29,36 +30,9 @@
   box-shadow: 0 0 12px rgba(236, 72, 153, 0.4);
 }
 
-/* Card hover romântico */
-div[class*="hover:border-pink-600"]:hover {
-  box-shadow: 0 0 16px rgba(236, 72, 153, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Flores animadas */
-@keyframes flower-fall {
-  0% {
-    transform: translateY(-50px) rotate(0deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(50vh) rotate(180deg);
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.animate-flower-fall {
-  animation: flower-fall 10s infinite linear;
-  pointer-events: none;
-}
-
-.delay-100 {
-  animation-delay: 2s;
-}
-.delay-200 {
-  animation-delay: 4s;
+.btn-sm {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
 }

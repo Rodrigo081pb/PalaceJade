@@ -1,6 +1,6 @@
 <section class="bg-[#0e0e0e] text-white min-h-screen px-6 py-10 relative overflow-hidden animate-fade-in">
 
-  <!-- Flores Animadas -->
+  <!-- Cabeçalho -->
   <div class="flex flex-col items-center text-center gap-4 mb-10">
     <i class="fas fa-heart text-red-400 text-3xl animate-pulse"></i>
     <div>
@@ -9,69 +9,80 @@
     </div>
   </div>
 
+  <!-- Grid de Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    <!-- Card 1 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-ring text-pink-400 text-xl"></i>
-        <h2 class="text-xl font-semibold">Pedido de Namoro Interativo</h2>
+    <ng-container *ngFor="let card of cards">
+      <div
+        class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <i [class]="card.icone + ' text-pink-400 text-xl'"></i>
+          <h2 class="text-xl font-semibold">{{ card.titulo }}</h2>
+        </div>
+        <p class="text-sm text-[#ccc] mb-4">{{ card.descricao }}</p>
+        <div class="flex gap-2">
+          <!-- Botão de solicitação de projeto -->
+          <button
+            class="btn w-full"
+            (click)="abrirModal(card.titulo)"
+          >
+            Solicitar Projeto
+          </button>
+          <!-- Botão de explorar: agora navega para a rota definida em card.rota -->
+          <button
+            class="btn w-full bg-pink-600 hover:bg-pink-700"
+            [routerLink]="[card.rota]"
+          >
+            Explorar Projeto
+          </button>
+        </div>
       </div>
-      <p class="text-sm text-[#ccc] mb-4">Uma página especial com história, efeitos e botão mágico para dizer "Sim".</p>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-music text-pink-400 text-xl"></i>
-        <h2 class="text-xl font-semibold">Polaroid com Música</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Fotos em formato polaroid com trilha sonora para emocionar.</p>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fa-solid fa-envelope text-pink-400 text-xl"></i>
-        <h2 class="text-xl font-semibold">Carta de Amor com Áudio</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Transforme sua voz e suas palavras em algo eterno e digital.</p>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fas fa-seedling text-pink-400 text-xl"></i>
-        <h2 class="text-xl font-semibold">Flores Digitais</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Flores surgem na tela ao entrar no link. Encantador, leve e mágico.</p>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 hover:border-pink-600 transition">
-      <div class="flex items-center gap-3 mb-4">
-        <i class="fa-solid fa-film text-pink-400 text-xl"></i>
-        <h2 class="text-xl font-semibold">Caixa de Memórias</h2>
-      </div>
-      <p class="text-sm text-[#ccc] mb-4">Um mural com datas, fotos, vídeos e mensagens. Pra guardar pra sempre.</p>
-      <button (click)="abrirModal()" class="btn w-full">Solicitar Projeto</button>
-    </div>
+    </ng-container>
 
     <!-- Card Coringa -->
     <div class="md:col-span-2">
       <app-joker-card
         [categoria]="'Amor'"
-        (abrirModal)="abrirModalIdeia()">
-      </app-joker-card>
+        (abrirModal)="abrirModalIdeia()"
+      ></app-joker-card>
     </div>
-
   </div>
 
-  <!-- Modais -->
-  <app-modal-contato [aberto]="modalAberto" [fechar]="fecharModal.bind(this)"></app-modal-contato>
-  <app-modal-ideia [aberto]="modalIdeiaAberto" [categoria]="'Love'" [fechar]="fecharModalIdeia.bind(this)"></app-modal-ideia>
+  <!-- Modal de Preview -->
+  <div
+    *ngIf="previewAberto"
+    class="fixed inset-0 bg-black/80 z-50 flex justify-center items-center p-4"
+  >
+    <div
+      class="bg-[#1a1a1a] p-6 rounded-xl w-full max-w-md text-center shadow-xl space-y-4"
+      [@modalAnim]
+    >
+      <h2 class="text-2xl font-bold text-pink-400">
+        {{ cardPreviewSelecionado.titulo }}
+      </h2>
+      <p class="text-[#aaa] text-sm">
+        {{ cardPreviewSelecionado.descricao }}
+      </p>
+      <p class="text-white text-xs italic">
+        [Preview fictício - aqui entra uma demonstração encantadora 💖]
+      </p>
+      <button
+        class="btn-sm bg-gray-700 hover:bg-gray-600 mt-4"
+        (click)="fecharPreview()"
+      >
+        Fechar Preview
+      </button>
+    </div>
+  </div>
+
+  <!-- Modais de contato e ideia -->
+  <app-modal-contato
+    [aberto]="modalAberto"
+    [fechar]="fecharModal.bind(this)"
+  ></app-modal-contato>
+  <app-modal-ideia
+    [aberto]="modalIdeiaAberto"
+    [categoria]="'Love'"
+    [fechar]="fecharModalIdeia.bind(this)"
+  ></app-modal-ideia>
 </section>
