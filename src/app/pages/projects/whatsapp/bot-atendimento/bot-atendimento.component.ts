@@ -23,6 +23,10 @@ interface ChatMessage {
   timestamp?: string;
 }
 
+interface Servico {
+  nome: string;
+}
+
 @Component({
   selector: 'app-bot-atendimento',
   standalone: true,
@@ -57,7 +61,7 @@ export class BotAtendimentoComponent implements OnChanges {
 
   private boasVindas() {
     const intro = [
-      '👋 Olá e seja muito bem-vindo(a) à Hikaruz!',
+      'seja muito bem-vindo(a) à Hikaruz!',
       this.randomItem(this.saudacoes),
       'Eu sou o Aurora, sua assistente virtual. Vamos conversar sobre como nossos chatbots podem transformar seu negócio.'
     ];
@@ -67,7 +71,7 @@ export class BotAtendimentoComponent implements OnChanges {
 
   private exibirMenuComDigitar() {
     this.adicionarBot(
-      ['Como posso te ajudar hoje? Selecione uma das opções abaixo:'],
+      ['Como posso te ajudar hoje? Selecione uma das opções abaixo para entender como funciona cada um dos nossos bots:'],
       () => this.mostrarMenu()
     );
   }
@@ -120,13 +124,13 @@ export class BotAtendimentoComponent implements OnChanges {
     this.mensagemAtual = '';
     clearTimeout(this.timeoutHandle);
 
-    if (/^(oi|olá|e aí|tudo bem)/i.test(txt)) {
+    if (/^(Oi|oi|olá|eai|tudo bem ?)/i.test(txt)) {
       this.adicionarBot([this.randomItem(this.saudacoes)], () => this.exibirMenuComDigitar());
     } else {
       this.adicionarBot(
         [
           'Desculpe, não entendi bem. 😉',
-          'Por favor, selecione uma das opções abaixo ou me fale melhor.'
+          'Por favor, selecione uma das opções abaixo ou me fale melhor, caso tenha alguma dúvida, digite "duvida".'
         ],
         () => this.exibirMenuComDigitar()
       );
@@ -136,43 +140,33 @@ export class BotAtendimentoComponent implements OnChanges {
   }
 
   private processarFluxo(etapa: string) {
-    const servicos: Record<string, { nome: string; aplicacoes: string; beneficio: string }> = {
+    const servicos: Record<string, Servico> = {
       fluxo1: {
-        nome: 'Bot Inteligente',
-        aplicacoes: 'e-commerces, clínicas, imobiliárias e startups de educação',
-        beneficio: 'engajar seus clientes 24/7, reduzir tempo de resposta e direcionar leads qualificados'
+        nome: `O Bot Inteligente ele tem aplicações para variados negócios, sendo eles para
+        e-commerces, clínicas, imobiliárias e startups de educação entre outros e além disto
+        ele pode agregar os seguintes benefícios reduzir tempo de resposta
+        e direcionar leads qualificados`
       },
       fluxo2: {
-        nome: 'Sistema de Pedidos via Chat',
-        aplicacoes: 'restaurantes, lojas virtuais e serviços de entrega',
-        beneficio: 'aumentar conversões e diminuir abandono de carrinho'
+        nome: `O nosso bot de Sistema de Pedidos via Chat pode ser aplicado para
+        restaurantes, lojas virtuais e serviços de entrega agregando benefícios tais como de
+        aumentar conversões e diminuir abandono de carrinho`
       },
       fluxo3: {
-        nome: 'Agendamento Automático',
-        aplicacoes: 'salões, consultórios e academias',
-        beneficio: 'reduzir faltas e otimizar a gestão de agenda'
+        nome: `O bot de Agendamento Automático pode ser utilizado para
+        salões, consultórios e academias e com a implementação desse bot você pode
+        adquirir benefícios de reduzir faltas e otimizar a gestão de agenda`
       },
       fluxo4: {
-        nome: 'Cobrança via Pix',
-        aplicacoes: 'freelancers, microempreendedores e e-commerces',
-        beneficio: 'acelerar recebimentos e oferecer excelente experiência ao cliente'
+        nome: `O nosso bot de Cobrança de Pix além de polpar teu tempo de ter que
+        ir até o cliente e realizar a cobrança ele automaticamente vai lá para você e pode ser
+        aplicado para freelancers, microempreendedores e e-commerces e é através dele que você pode
+        acelerar recebimentos e oferecer excelente experiência ao cliente`
       }
     };
 
     const info = servicos[etapa];
-    const respostas = [
-      `🎯 **${info.nome} Hikaruz**: uma solução completa para sua empresa.`,
-      `💡 Aplicações: ${info.aplicacoes}.`,
-      `🚀 Benefícios: ${info.beneficio}.`
-    ];
-
-    this.adicionarBot(respostas, () => this.perguntarAplicavel(info));
-    this.definirTimeout();
-  }
-
-  private perguntarAplicavel(info: { nome: string; aplicacoes: string; beneficio: string }) {
-    const pergunta = `Nós da Hikaruz fazemos **${info.nome}** para ${info.beneficio}. Isso se aplica ao seu negócio?`;
-    this.adicionarBot([pergunta], () => {
+    this.adicionarBot([info.nome], () => {
       this.adicionarMensagem({
         user: 'bot',
         quickReplies: [
@@ -182,6 +176,7 @@ export class BotAtendimentoComponent implements OnChanges {
         timestamp: this.horaAtual()
       });
     });
+    this.definirTimeout();
   }
 
   private perguntarAlgoMais() {
